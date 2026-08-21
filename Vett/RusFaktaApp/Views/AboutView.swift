@@ -111,7 +111,7 @@ struct AboutView: View {
                     .foregroundStyle(.secondary)
             }
         }
-        .navigationTitle("Om")
+        .navigationTitle("")
         // Inline (small) instead of the default large title — the content
         // already has its own big "Om Vett" heading right at the top, so a
         // second large system title with different wording ("Om") directly
