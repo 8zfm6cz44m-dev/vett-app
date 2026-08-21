@@ -15,7 +15,14 @@ struct AboutView: View {
 
     var body: some View {
         List {
-            Section("Om Vett") {
+            Section {
+                // Large, bold title in the same style as the other tabs
+                // (EmergencyView, TipJarView) — matches .primary, so it's
+                // black in light mode and white in dark mode, instead of
+                // the small grey List section-header treatment.
+                Text("Om Vett")
+                    .font(.largeTitle.bold())
+                    .listRowSeparator(.hidden)
                 Text("Vett er et nøytralt oppslagsverk om rusmidler og risiko, laget for å gi ungdom og andre lettforståelig, faktabasert informasjon — ikke for å oppfordre til bruk. Målet er å forebygge skade og gjøre det enklere å søke hjelp raskt hvis noe går galt.")
                     .font(.subheadline)
             }

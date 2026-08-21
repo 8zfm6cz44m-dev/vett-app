@@ -41,37 +41,13 @@ struct SubstanceListView: View {
     /// substring anywhere in the full text (fast path, handles most
     /// searches), or — for queries of 3+ characters only — as a close
     /// typo-tolerant match against the substance's name/category/aliases.
-    /// Delegates to `fuzzyTextMatches` so this uses exactly the same rules as
-    /// `searchMentionsOverdose` below — see that function's comment for why
-    /// having two separate copies of this logic was itself the bug last time.
+    /// Delegates to `FuzzySearch.matches` so this uses exactly the same rules
+    /// as `searchMentionsOverdose` below — see FuzzySearch.swift for why
+    /// having two separate copies of this logic was itself the bug last
+    /// time, and why it now lives in its own (unit-tested) file rather than
+    /// as a private method on this view.
     private func wordMatches(_ query: String, in substance: Substance) -> Bool {
-        fuzzyTextMatches(query, candidates: substance.fuzzyMatchWords, fullText: substance.searchableText)
-    }
-
-    /// Shared fuzzy/typo-tolerant matching: exact substring match anywhere in
-    /// `fullText` (fast path), or — for queries of 3+ characters only — a
-    /// close match against one of `candidates`, either as a whole word or
-    /// against the *start* of a longer candidate word (so a truncated or
-    /// slightly mistyped word like "ovre" for "over[dose]" still matches).
-    /// This one function backs BOTH substance search and overdose-keyword
-    /// detection, so the two can never drift out of sync again.
-    private func fuzzyTextMatches(_ query: String, candidates: [String], fullText: String) -> Bool {
-        guard query.count >= 2 else { return fullText.contains(query) }
-        if fullText.contains(query) { return true }
-        guard query.count >= 3 else { return false }
-
-        let threshold = query.count <= 4 ? 1 : (query.count <= 8 ? 2 : 3)
-
-        let wholeWordMatch = candidates.contains { word in
-            abs(word.count - query.count) <= threshold && word.levenshteinDistance(to: query) <= threshold
-        }
-        if wholeWordMatch { return true }
-
-        return candidates.contains { word in
-            guard word.count > query.count else { return false }
-            let prefix = String(word.prefix(query.count))
-            return prefix.levenshteinDistance(to: query) <= threshold
-        }
+        FuzzySearch.matches(query, candidates: substance.fuzzyMatchWords, fullText: substance.searchableText)
     }
 
     var body: some View {
@@ -117,7 +93,7 @@ struct SubstanceListView: View {
     /// True when the current search text includes — or fuzzily/partially
     /// matches — an overdose/emergency keyword, so opening a result jumps
     /// straight to the overdose section. Uses the exact same fuzzy-matching
-    /// rules as the substance search itself (via `fuzzyTextMatches`), so a
+    /// rules as the substance search itself (via `FuzzySearch.matches`), so a
     /// typo'd or truncated query like "ovr kwt" that finds Ketamin through
     /// fuzzy matching on "overdose" also triggers the auto-scroll — the two
     /// checks previously used different matching rules, which is what broke
@@ -126,7 +102,7 @@ struct SubstanceListView: View {
         let keywordsText = overdoseSearchKeywords.joined(separator: " ")
         let words = searchText.lowercased().split(separator: " ").map(String.init)
         return words.contains { word in
-            fuzzyTextMatches(word, candidates: overdoseSearchKeywords, fullText: keywordsText)
+            FuzzySearch.matches(word, candidates: overdoseSearchKeywords, fullText: keywordsText)
         }
     }
 
