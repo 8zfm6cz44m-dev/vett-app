@@ -42,6 +42,12 @@ struct EmergencyView: View {
             .padding()
         }
         .navigationTitle("Nødhjelp")
+        // Inline (small) instead of the default large title — the content
+        // already leads with its own big heading (guidance.title, e.g. "Ved
+        // mistanke om overdose"), so a second large system title with
+        // different wording directly above it looked like a duplicated/
+        // mismatched header. Same fix as TipJarView/AboutView.
+        .navigationBarTitleDisplayMode(.inline)
     }
 
     private var callButtonsRow: some View {
