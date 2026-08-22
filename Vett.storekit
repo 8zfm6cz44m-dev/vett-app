@@ -1,0 +1,65 @@
+{
+  "identifier" : "5D1A1E00-0000-4000-8000-000000000001",
+  "nonRenewingSubscriptions" : [],
+  "products" : [
+    {
+      "displayPrice" : "19.00",
+      "familyShareable" : false,
+      "internalID" : "5D1A1E00-0000-4000-8000-000000000011",
+      "localizations" : [
+        {
+          "description" : "En liten donasjon som takk for appen.",
+          "displayName" : "Liten støtte",
+          "locale" : "nb"
+        }
+      ],
+      "productID" : "com.app.vett.tip.small",
+      "referenceName" : "Tip Small",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "49.00",
+      "familyShareable" : false,
+      "internalID" : "5D1A1E00-0000-4000-8000-000000000012",
+      "localizations" : [
+        {
+          "description" : "En middels donasjon som takk for appen.",
+          "displayName" : "Middels støtte",
+          "locale" : "nb"
+        }
+      ],
+      "productID" : "com.app.vett.tip.medium",
+      "referenceName" : "Tip Medium",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "99.00",
+      "familyShareable" : false,
+      "internalID" : "5D1A1E00-0000-4000-8000-000000000013",
+      "localizations" : [
+        {
+          "description" : "En stor donasjon som takk for appen.",
+          "displayName" : "Stor støtte",
+          "locale" : "nb"
+        }
+      ],
+      "productID" : "com.app.vett.tip.large",
+      "referenceName" : "Tip Large",
+      "type" : "Consumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "0000000000",
+    "_developerTeamID" : "",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 0,
+    "_locale" : "nb_NO",
+    "_storefront" : "NOR",
+    "_storeKitErrors" : []
+  },
+  "subscriptionGroups" : [],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

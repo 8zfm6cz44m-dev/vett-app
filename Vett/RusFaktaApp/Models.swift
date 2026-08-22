@@ -3,14 +3,23 @@ import Foundation
 // MARK: - Data models matching Resources/Substances.json
 // All content is bundled locally in the app. Nothing here is fetched from
 // or sent to a network at runtime — see DataStore.swift.
+//
+// Explicitly `nonisolated`: the project's "Default Actor Isolation" build
+// setting applies @MainActor to every declaration in the module unless it
+// opts out. These are plain, synchronous data models decoded from JSON (and
+// compared/hashed) on whatever thread/task happens to do that work — they
+// were never meant to be actor-isolated, and leaving them implicitly
+// MainActor-isolated is exactly what produced the Swift 6 warnings ("Main
+// actor-isolated conformance of 'Substance' to 'Equatable'/'Decodable' cannot
+// satisfy conformance requirement") noted in the code review.
 
-struct EmergencyNumber: Codable, Identifiable {
+nonisolated struct EmergencyNumber: Codable, Identifiable {
     var id: String { label }
     let label: String
     let number: String
 }
 
-struct EmergencyNumbers: Codable {
+nonisolated struct EmergencyNumbers: Codable {
     let ambulance: EmergencyNumber
     let poison: EmergencyNumber
     let rusinfo: EmergencyNumber
@@ -19,7 +28,7 @@ struct EmergencyNumbers: Codable {
     var all: [EmergencyNumber] { [ambulance, poison, rusinfo, parorende] }
 }
 
-struct GeneralEmergencyGuidance: Codable {
+nonisolated struct GeneralEmergencyGuidance: Codable {
     let title: String
     let intro: String
     let goldenRule: String
@@ -30,7 +39,7 @@ struct GeneralEmergencyGuidance: Codable {
     let mixingPrinciple: String
 }
 
-struct Substance: Codable, Identifiable, Hashable {
+nonisolated struct Substance: Codable, Identifiable, Hashable {
     let id: String
     let name: String
     let aliases: [String]
@@ -130,7 +139,7 @@ extension String {
     }
 }
 
-struct SubstanceDatabase: Codable {
+nonisolated struct SubstanceDatabase: Codable {
     let emergencyNumbers: EmergencyNumbers
     let generalEmergencyGuidance: GeneralEmergencyGuidance
     let substances: [Substance]

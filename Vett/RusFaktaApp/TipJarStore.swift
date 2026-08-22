@@ -11,17 +11,19 @@ import Foundation
 /// behind payment.
 ///
 /// Product IDs below match the app's real bundle identifier
-/// (com.elofsson.vett) — create matching consumable in-app purchases in App
+/// (com.app.vett) — create matching consumable in-app purchases in App
 /// Store Connect with these exact identifiers. See README_BUILD_GUIDE.md
 /// step "Donasjoner / tip jar" for the App Store Connect setup steps, and
-/// use Vett.storekit (already wired into the scheme instructions) to test
-/// purchases locally before you've configured anything in App Store Connect.
+/// use Vett.storekit to test purchases locally before you've configured
+/// anything in App Store Connect. Not wired into the scheme by default —
+/// enable it via Xcode: Product > Scheme > Edit Scheme > Run > Options >
+/// StoreKit Configuration > Vett.storekit.
 @MainActor
 final class TipJarStore: ObservableObject {
     static let productIDs = [
-        "com.elofsson.vett.tip.small",   // e.g. 19 kr
-        "com.elofsson.vett.tip.medium",  // e.g. 49 kr
-        "com.elofsson.vett.tip.large"    // e.g. 99 kr
+        "com.app.vett.tip.small",   // e.g. 19 kr
+        "com.app.vett.tip.medium",  // e.g. 49 kr
+        "com.app.vett.tip.large"    // e.g. 99 kr
     ]
 
     @Published private(set) var products: [Product] = []
