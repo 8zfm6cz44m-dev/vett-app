@@ -23,7 +23,7 @@ private let overdoseSearchKeywords = ["overdose", "nødhjelp", "akutt", "død", 
 /// instead, so variants fold together, and stays correct automatically as
 /// substances are added later (the weekly fact-check job only edits
 /// Substances.json, never this file).
-enum SubstanceGroup: CaseIterable, Hashable {
+nonisolated enum SubstanceGroup: CaseIterable, Hashable {
     case sentralstimulerende
     case cannabinoider
     case dempende

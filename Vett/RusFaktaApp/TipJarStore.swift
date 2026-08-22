@@ -77,9 +77,21 @@ final class TipJarStore: ObservableObject {
             for await update in Transaction.updates {
                 if case .verified(let transaction) = update {
                     await transaction.finish()
-                    await MainActor.run { self?.lastThankYou = true }
+                    // Awaiting an optional-chained call straight into a @MainActor
+                    // method (rather than capturing `self` again inside a nested
+                    // MainActor.run { } closure) is what Swift 6 strict
+                    // concurrency wants here: reading a weakly-captured `self`
+                    // from inside a second, separately-concurrently-executing
+                    // closure is exactly the "reference to captured var 'self'
+                    // in concurrently-executing code" error the old version hit.
+                    await self?.markThankYou()
                 }
             }
         }
+    }
+
+    @MainActor
+    private func markThankYou() {
+        lastThankYou = true
     }
 }
