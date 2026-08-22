@@ -12,6 +12,79 @@ struct SubstanceLink: Hashable {
 
 private let overdoseSearchKeywords = ["overdose", "nødhjelp", "akutt", "død", "forgiftning"]
 
+/// Coarse groupings for the "Fakta" list, inspired by rusopplysningen.no's
+/// category taxonomy (a small, fixed set of umbrella categories).
+///
+/// Substances.json's own `category` field is deliberately specific/clinical
+/// per substance (e.g. "Sentralstimulerende (røykbar fribase av kokain)" for
+/// Crack, "Sentralstimulerende (katinon)" for Mefedron) — great for the
+/// detail page, but grouping the list by that exact string would produce
+/// ~20 near-duplicate, mostly-one-item sections. This buckets by keyword
+/// instead, so variants fold together, and stays correct automatically as
+/// substances are added later (the weekly fact-check job only edits
+/// Substances.json, never this file).
+enum SubstanceGroup: CaseIterable, Hashable {
+    case sentralstimulerende
+    case cannabinoider
+    case dempende
+    case opioider
+    case psykedelika
+    case dissosiative
+    case reseptbelagt
+    case nikotin
+    case annet
+
+    var title: String {
+        switch self {
+        case .sentralstimulerende: "Sentralstimulerende"
+        case .cannabinoider: "Cannabinoider"
+        case .dempende: "Dempende"
+        case .opioider: "Opioider"
+        case .psykedelika: "Psykedelika og hallusinogener"
+        case .dissosiative: "Dissosiative stoffer"
+        case .reseptbelagt: "Reseptbelagte legemidler"
+        case .nikotin: "Nikotin og innåndingsmidler"
+        case .annet: "Andre stoffer"
+        }
+    }
+
+    var icon: String {
+        switch self {
+        case .sentralstimulerende: "bolt.fill"
+        case .cannabinoider: "leaf.fill"
+        case .dempende: "moon.fill"
+        case .opioider: "cross.case.fill"
+        case .psykedelika: "sparkles"
+        case .dissosiative: "cloud.fill"
+        case .reseptbelagt: "pills.fill"
+        case .nikotin: "wind"
+        case .annet: "questionmark.circle.fill"
+        }
+    }
+
+    /// Buckets a substance by keyword-matching its raw `category` string,
+    /// checked in priority order (most specific first) so e.g. an opioid
+    /// that's also plant-based still lands under Opioider.
+    ///
+    /// One explicit override: Substances.json describes Cannabis clinically
+    /// as "Dempende / svakt hallusinogent" (accurate for the detail page),
+    /// but both rusopplysningen.no and everyday usage group it under
+    /// Cannabinoider, so the list groups it there too.
+    static func forSubstance(_ substance: Substance) -> SubstanceGroup {
+        if substance.id == "cannabis" { return .cannabinoider }
+        let c = substance.category.lowercased()
+        if c.contains("opioid") { return .opioider }
+        if c.contains("cannabinoider") { return .cannabinoider }
+        if c.contains("psykedelika") { return .psykedelika }
+        if c.contains("dissosiativ") { return .dissosiative }
+        if c.contains("reseptbelagt legemiddel") { return .reseptbelagt }
+        if c.contains("sentralstimulerende") { return .sentralstimulerende }
+        if c.contains("dempende") { return .dempende }
+        if c.contains("nikotinprodukt") || c.contains("innåndingsmiddel") { return .nikotin }
+        return .annet
+    }
+}
+
 struct SubstanceListView: View {
     /// When true, the search field is activated the moment this view
     /// appears — used by the dedicated "Søk" tab so the keyboard is ready
@@ -21,7 +94,6 @@ struct SubstanceListView: View {
 
     @EnvironmentObject private var store: DataStore
     @State private var searchText = ""
-    @State private var selectedCategory: String? = nil
     @State private var isSearchActive = false
 
     /// Splits the query into words and requires every word to appear
@@ -30,10 +102,20 @@ struct SubstanceListView: View {
     /// phrase never appears verbatim in the content.
     private var filtered: [Substance] {
         let words = searchText.lowercased().split(separator: " ").map(String.init)
+        guard !words.isEmpty else { return store.substances }
         return store.substances.filter { substance in
-            let matchesCategory = selectedCategory == nil || substance.category == selectedCategory
-            let matchesSearch = words.isEmpty || words.allSatisfy { wordMatches($0, in: substance) }
-            return matchesCategory && matchesSearch
+            words.allSatisfy { wordMatches($0, in: substance) }
+        }
+    }
+
+    /// `filtered`, bucketed into groups and ordered by `SubstanceGroup`'s
+    /// case order — empty groups (e.g. no results for the current search)
+    /// are dropped rather than shown as empty sections.
+    private var groupedFiltered: [(group: SubstanceGroup, substances: [Substance])] {
+        let buckets = Dictionary(grouping: filtered, by: SubstanceGroup.forSubstance)
+        return SubstanceGroup.allCases.compactMap { group in
+            guard let items = buckets[group], !items.isEmpty else { return nil }
+            return (group, items)
         }
     }
 
@@ -52,27 +134,19 @@ struct SubstanceListView: View {
 
     var body: some View {
         List {
-            Section {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 8) {
-                        categoryChip(nil, label: "Alle")
-                        ForEach(store.categories, id: \.self) { category in
-                            categoryChip(category, label: category)
+            ForEach(groupedFiltered, id: \.group) { entry in
+                Section {
+                    ForEach(entry.substances) { substance in
+                        NavigationLink(value: SubstanceLink(substance: substance, highlightOverdose: searchMentionsOverdose)) {
+                            SubstanceRow(substance: substance)
                         }
                     }
-                    .padding(.vertical, 4)
+                } header: {
+                    groupHeader(entry.group, count: entry.substances.count)
                 }
-                .listRowInsets(EdgeInsets())
-                .listRowSeparator(.hidden)
-                .padding(.horizontal)
             }
 
             Section {
-                ForEach(filtered) { substance in
-                    NavigationLink(value: SubstanceLink(substance: substance, highlightOverdose: searchMentionsOverdose)) {
-                        SubstanceRow(substance: substance)
-                    }
-                }
             } footer: {
                 Text("Innhold hentet fra rusinfo.no og rusopplysningen.no. Søk lagres aldri og sendes aldri noe sted.")
                     .font(.caption2)
@@ -106,20 +180,28 @@ struct SubstanceListView: View {
         }
     }
 
-    private func categoryChip(_ category: String?, label: String) -> some View {
-        Button {
-            selectedCategory = (selectedCategory == category) ? nil : category
-        } label: {
-            Text(label)
-                .font(.caption.weight(.medium))
-                .padding(.horizontal, 12)
-                .padding(.vertical, 6)
-                .background(selectedCategory == category ? Color.indigo : Color(.secondarySystemBackground))
-                .foregroundStyle(selectedCategory == category ? .white : .primary)
-                .clipShape(Capsule())
+    private func groupHeader(_ group: SubstanceGroup, count: Int) -> some View {
+        HStack(spacing: 8) {
+            Image(systemName: group.icon)
+                .font(.system(size: 12, weight: .semibold))
+                .foregroundStyle(.indigo)
+                .frame(width: 22, height: 22)
+                .background(Color.indigo.opacity(0.16))
+                .clipShape(RoundedRectangle(cornerRadius: 7))
+            Text(group.title)
+                .font(.subheadline.weight(.bold))
+                .foregroundStyle(.primary)
+            Spacer()
+            Text("\(count)")
+                .font(.caption)
+                .foregroundStyle(.secondary)
         }
-        .buttonStyle(.plain)
-        .accessibilityAddTraits(selectedCategory == category ? .isSelected : [])
+        .padding(.vertical, 2)
+        // insetGrouped List sections otherwise force header text into the
+        // small-caps grey style — this header wants its own icon+title
+        // treatment instead, matching the style AboutView/EmergencyView use
+        // for their own custom headings.
+        .textCase(nil)
     }
 }
 
@@ -130,18 +212,18 @@ private struct SubstanceRow: View {
         VStack(alignment: .leading, spacing: 4) {
             Text(substance.name)
                 .font(.headline)
-            Text(substance.category)
-                .font(.caption)
-                .foregroundStyle(.secondary)
             Text(substance.shortDescription)
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
                 .lineLimit(2)
         }
         .padding(.vertical, 4)
-        // Without this, VoiceOver treats the name, category, and description
-        // as three separate stops per row, making it slow to browse a list
-        // of substances. One swipe per row now reads all of it.
+        // Without this, VoiceOver treats the name and description as two
+        // separate stops per row, making it slow to browse a list of
+        // substances. One swipe per row now reads all of it. The specific
+        // category (not just shown visually anymore now that rows are
+        // grouped under a category section header) is still included here
+        // so VoiceOver users don't lose that detail.
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("\(substance.name), \(substance.category). \(substance.shortDescription)")
     }
