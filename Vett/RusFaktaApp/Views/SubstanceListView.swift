@@ -138,8 +138,11 @@ struct SubstanceListView: View {
                 Section {
                     ForEach(entry.substances) { substance in
                         NavigationLink(value: SubstanceLink(substance: substance, highlightOverdose: searchMentionsOverdose)) {
-                            SubstanceRow(substance: substance)
+                            SubstanceRow(substance: substance, icon: entry.group.icon)
                         }
+                        .listRowInsets(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16))
+                        .listRowSeparator(.hidden)
+                        .listRowBackground(Color.clear)
                     }
                 } header: {
                     groupHeader(entry.group, count: entry.substances.count)
@@ -150,9 +153,12 @@ struct SubstanceListView: View {
             } footer: {
                 Text("Innhold hentet fra rusinfo.no og rusopplysningen.no. Søk lagres aldri og sendes aldri noe sted.")
                     .font(.caption2)
+                    .foregroundStyle(.secondary)
             }
         }
-        .listStyle(.insetGrouped)
+        .listStyle(.plain)
+        .scrollContentBackground(.hidden)
+        .background(Color(.systemGroupedBackground))
         .navigationTitle(titleOverride ?? "Fakta om rusmidler")
         .searchable(text: $searchText, isPresented: $isSearchActive, prompt: "Søk etter stoff eller stikkord, f.eks. \"overdose kokain\"")
         .autocorrectionDisabled()
@@ -197,7 +203,7 @@ struct SubstanceListView: View {
                 .foregroundStyle(.secondary)
         }
         .padding(.vertical, 2)
-        // insetGrouped List sections otherwise force header text into the
+        // .plain List sections would otherwise force header text into the
         // small-caps grey style — this header wants its own icon+title
         // treatment instead, matching the style AboutView/EmergencyView use
         // for their own custom headings.
@@ -205,21 +211,38 @@ struct SubstanceListView: View {
     }
 }
 
+/// A single substance, styled as a self-contained card — matching the
+/// rounded, secondarySystemBackground "card" language SubstanceDetailView
+/// already uses for its own sections, so the list page no longer feels like
+/// a plainer, older screen than the page it leads to.
 private struct SubstanceRow: View {
     let substance: Substance
+    let icon: String
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text(substance.name)
-                .font(.headline)
-            Text(substance.shortDescription)
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-                .lineLimit(2)
+        HStack(alignment: .top, spacing: 12) {
+            Image(systemName: icon)
+                .font(.system(size: 15, weight: .semibold))
+                .foregroundStyle(.indigo)
+                .frame(width: 36, height: 36)
+                .background(Color.indigo.opacity(0.14))
+                .clipShape(Circle())
+
+            VStack(alignment: .leading, spacing: 3) {
+                Text(substance.name)
+                    .font(.headline)
+                Text(substance.shortDescription)
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(2)
+            }
         }
-        .padding(.vertical, 4)
-        // Without this, VoiceOver treats the name and description as two
-        // separate stops per row, making it slow to browse a list of
+        .padding(12)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color(.secondarySystemBackground))
+        .clipShape(RoundedRectangle(cornerRadius: 14))
+        // Without this, VoiceOver treats the icon, name and description as
+        // three separate stops per row, making it slow to browse a list of
         // substances. One swipe per row now reads all of it. The specific
         // category (not just shown visually anymore now that rows are
         // grouped under a category section header) is still included here
