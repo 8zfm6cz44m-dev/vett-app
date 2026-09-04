@@ -44,6 +44,9 @@ struct AboutView: View {
                 Label("Ingen internettilkobling kreves for å bruke appen", systemImage: "wifi.slash")
                 Label("Ingen analyse- eller sporingsverktøy", systemImage: "eye.slash")
                 Label("Appen lagrer ingenting om deg lokalt", systemImage: "iphone")
+                Link(destination: URL(string: "https://claude.ai/code/artifact/84a0a41b-b1a3-4217-9769-aefaa79f5109")!) {
+                    Label("Full personvernerklæring", systemImage: "doc.text")
+                }
             }
 
             Section {

@@ -3,50 +3,21 @@
 Utkast forberedt av Claude 2026-09-04. Alt innhold nedenfor er utkast — les
 igjennom og juster før du bruker det.
 
-## 1. Personvernerklæring (Privacy Policy)
+## 1. Personvernerklæring (Privacy Policy) — PUBLISERT
 
-Apple krever en lenke til en personvernerklæring, både i App Store Connect
-(metadata-feltet "Privacy Policy URL") og lett tilgjengelig inne i appen
-(App Store Review Guidelines 5.1.1(i)). Appen har allerede en "Personvern"-
-seksjon i Om-fanen, men den er ikke en formell erklæring med URL — det
-holder ikke alene.
+Publisert som en egen side (personvern + support i ett):
+https://claude.ai/code/artifact/84a0a41b-b1a3-4217-9769-aefaa79f5109
 
-**Løsning:** Publiser teksten under et sted du kontrollerer en URL til,
-f.eks. en enkel side på GitHub Pages, Notion (offentlig delt side), eller
-rusinnsikt.no når den er satt opp. Si ifra så hjelper jeg deg publisere den
-som en enkel nettside.
+**VIKTIG — gjør dette før du limer inn URL-en i App Store Connect:** Claude-
+artefakter er private til du deler dem. Åpne siden, trykk delingsmenyn og
+gjør den offentlig/delbar — ellers kan ikke Apples granskere åpne lenken.
 
----
+Lenken er også lagt inn i appens "Personvern"-seksjon i Om-fanen (commit
+kommer), og kan brukes i BÅDE "Privacy Policy URL" og "Support URL"-feltene
+i App Store Connect siden siden dekker begge deler.
 
-**Personvernerklæring for Rusinnsikt**
-
-*Sist oppdatert: [dato]*
-
-Rusinnsikt er laget for å kreve så lite av deg som mulig — også når det
-gjelder personvern.
-
-**Vi samler ikke inn noe.** Appen har ingen brukerkonto, ingen innlogging,
-og ingen analyse- eller sporingsverktøy. Det sendes ingen data til oss
-eller til tredjeparter mens du bruker appen.
-
-**Ingen internettforbindelse kreves.** Alt faktainnhold i appen er lagret
-lokalt på enheten din. Appen tar ikke kontakt med noen server for å vise
-deg informasjon om rusmidler, nødnumre eller førstehjelp.
-
-**Det eneste som lagres lokalt** er én innstilling — om du har sett
-velkomstskjermen (onboarding) — lagret via iOS' innebygde UserDefaults,
-kun tilgjengelig for appen selv. Dette lagres aldri utenfor enheten din.
-
-**Frivillig støtte (tip jar):** Hvis du velger å støtte appen økonomisk,
-håndteres kjøpet av Apple via App Store — vi mottar aldri betalingsinfo,
-kortnummer eller annen finansiell informasjon.
-
-**Lenker ut av appen:** Om-fanen inneholder lenker til rusinfo.no,
-rusopplysningen.no og App Store. Disse eksterne sidene har sine egne
-personvernvilkår.
-
-**Kontakt:** Spørsmål om personvern kan sendes til
-elofsson.martin@gmail.com.
+Vil du heller ha den på en egen domenetilknyttet URL (f.eks. rusinnsikt.no/personvern)
+senere, kan samme HTML-innhold flyttes dit når domenet er satt opp — si ifra.
 
 ---
 
@@ -104,8 +75,8 @@ rusinfo.no, rusopplysningen.no, Oslo kommune eller Helsedirektoratet.
 Ved mistanke om overdose eller forgiftning: ring alltid 113 eller
 Giftinformasjonen.
 
-## 5. Support-URL
+## 5. Support-URL — LØST (samme side som punkt 1)
 
-App Store Connect krever en support-URL (ikke bare e-post). Enkleste
-løsning: en enkel side på rusinnsikt.no, eller en gratis side (GitHub
-Pages/Notion) med kontakt-e-post og en kort FAQ. Si ifra så bygger jeg en.
+Support-seksjonen og en FAQ er inkludert på samme publiserte side som
+personvernerklæringen (se punkt 1). Samme URL kan brukes i "Support URL"-
+feltet i App Store Connect.
