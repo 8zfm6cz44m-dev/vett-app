@@ -15,10 +15,10 @@ struct OnboardingView: View {
                     .padding(.top, 24)
                     .accessibilityHidden(true)
 
-                Text("Velkommen til Vett")
+                Text("Velkommen til Rusinnsikt")
                     .font(.largeTitle.bold())
 
-                Text("Vett er et faktaoppslagsverk om rusmidler og risiko — på samme måte som en legemiddelkatalog. Appen er laget for å gi korrekt, nøytral informasjon, ikke for å oppfordre til bruk.")
+                Text("Rusinnsikt er et faktaoppslagsverk om rusmidler og risiko — på samme måte som en legemiddelkatalog. Appen er laget for å gi korrekt, nøytral informasjon, ikke for å oppfordre til bruk.")
                     .font(.body)
 
                 infoRow(icon: "checkmark.shield", text: "Innholdet er basert på informasjon fra rusinfo.no (Oslo kommune) og rusopplysningen.no.")

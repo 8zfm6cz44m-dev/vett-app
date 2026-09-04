@@ -114,7 +114,7 @@ struct SubstanceDetailView: View {
         // visibly stall for a few seconds before any options appear.
         ShareLink(
             item: fullPageShareText,
-            preview: SharePreview("\(substance.name) – Vett")
+            preview: SharePreview("\(substance.name) – Rusinnsikt")
         ) {
             Label("Del info om \(substance.name)", systemImage: "square.and.arrow.up")
                 .font(.subheadline.weight(.semibold))
@@ -162,7 +162,7 @@ struct SubstanceDetailView: View {
         lines.append("")
         lines.append("Er du i tvil? Ring 113 – uansett.")
         lines.append("")
-        lines.append("Delt fra Vett-appen — gratis, nøytral rusinformasjon uten konto eller sporing.")
+        lines.append("Delt fra Rusinnsikt-appen — gratis, nøytral rusinformasjon uten konto eller sporing.")
         lines.append("Last ned appen: \(AppLinks.appStoreURL.absoluteString)")
         return lines.joined(separator: "\n")
     }

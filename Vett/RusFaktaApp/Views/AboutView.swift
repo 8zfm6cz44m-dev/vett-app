@@ -8,7 +8,7 @@ struct AboutView: View {
         components.scheme = "mailto"
         components.path = "elofsson.martin@gmail.com"
         components.queryItems = [
-            URLQueryItem(name: "subject", value: "Tilbakemelding om Vett-appen")
+            URLQueryItem(name: "subject", value: "Tilbakemelding om Rusinnsikt-appen")
         ]
         return components.url!
     }
@@ -20,10 +20,10 @@ struct AboutView: View {
                 // (EmergencyView, TipJarView) — matches .primary, so it's
                 // black in light mode and white in dark mode, instead of
                 // the small grey List section-header treatment.
-                Text("Om Vett")
+                Text("Om Rusinnsikt")
                     .font(.largeTitle.bold())
                     .listRowSeparator(.hidden)
-                Text("Vett er et nøytralt oppslagsverk om rusmidler og risiko, laget for å gi ungdom og andre lettforståelig, faktabasert informasjon — ikke for å oppfordre til bruk. Målet er å forebygge skade og gjøre det enklere å søke hjelp raskt hvis noe går galt.")
+                Text("Rusinnsikt er et nøytralt oppslagsverk om rusmidler og risiko, laget for å gi ungdom og andre lettforståelig, faktabasert informasjon — ikke for å oppfordre til bruk. Målet er å forebygge skade og gjøre det enklere å søke hjelp raskt hvis noe går galt.")
                     .font(.subheadline)
             }
 
@@ -50,7 +50,7 @@ struct AboutView: View {
                 NavigationLink {
                     TipJarView()
                 } label: {
-                    Label("Støtt Vett (valgfritt)", systemImage: "heart")
+                    Label("Støtt Rusinnsikt (valgfritt)", systemImage: "heart")
                 }
             } footer: {
                 Text("Helt frivillig — appen er og forblir gratis for alle, uansett.")
@@ -64,17 +64,17 @@ struct AboutView: View {
                 // button could visibly stall for several seconds.
                 ShareLink(
                     item: AppLinks.appStoreURL,
-                    preview: SharePreview("Vett – Rusinformasjon", image: Image(systemName: "book.closed.fill"))
+                    preview: SharePreview("Rusinnsikt – Rusinformasjon", image: Image(systemName: "book.closed.fill"))
                 ) {
                     Label("Del appen med andre", systemImage: "square.and.arrow.up")
                 }
                 Link(destination: AppLinks.writeReviewURL) {
-                    Label("Vurder Vett i App Store", systemImage: "star")
+                    Label("Vurder Rusinnsikt i App Store", systemImage: "star")
                 }
             } header: {
                 Text("Spre appen")
             } footer: {
-                Text("Jo flere som vet at Vett finnes, jo flere kan få riktig informasjon i stedet for å google seg fram.")
+                Text("Jo flere som vet at Rusinnsikt finnes, jo flere kan få riktig informasjon i stedet for å google seg fram.")
                     .font(.caption2)
             }
 
@@ -100,20 +100,20 @@ struct AboutView: View {
             }
 
             Section("Ansvarsfraskrivelse") {
-                Text("Vett gir generell, faktabasert informasjon og erstatter ikke profesjonell medisinsk vurdering, akutthjelp eller rådgivning. Innholdet er skrevet om og forkortet fra offentlige kilder og kan inneholde feil eller bli utdatert. Ved mistanke om overdose eller forgiftning: ring alltid 113 eller Giftinformasjonen, uavhengig av hva som står i appen. Vett og appens utvikler er ikke ansvarlig for beslutninger tatt på grunnlag av innholdet.")
+                Text("Rusinnsikt gir generell, faktabasert informasjon og erstatter ikke profesjonell medisinsk vurdering, akutthjelp eller rådgivning. Innholdet er skrevet om og forkortet fra offentlige kilder og kan inneholde feil eller bli utdatert. Ved mistanke om overdose eller forgiftning: ring alltid 113 eller Giftinformasjonen, uavhengig av hva som står i appen. Rusinnsikt og appens utvikler er ikke ansvarlig for beslutninger tatt på grunnlag av innholdet.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
 
             Section {
-                Text("Vett er et uavhengig informasjonsprosjekt og er ikke offisielt tilknyttet rusinfo.no, rusopplysningen.no, Oslo kommune eller Helsedirektoratet.")
+                Text("Rusinnsikt er et uavhengig informasjonsprosjekt og er ikke offisielt tilknyttet rusinfo.no, rusopplysningen.no, Oslo kommune eller Helsedirektoratet.")
                     .font(.caption2)
                     .foregroundStyle(.secondary)
             }
         }
         .navigationTitle("")
         // Inline (small) instead of the default large title — the content
-        // already has its own big "Om Vett" heading right at the top, so a
+        // already has its own big "Om Rusinnsikt" heading right at the top, so a
         // second large system title with different wording ("Om") directly
         // above it looked like a duplicated/mismatched header. Same fix as
         // TipJarView.

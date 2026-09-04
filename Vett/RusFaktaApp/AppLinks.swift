@@ -3,7 +3,7 @@ import Foundation
 /// Central place for the app's App Store link — used both for the
 /// "share the app" / "rate us" links in the About screen, and appended to
 /// the full-page share text so someone receiving shared substance info can
-/// also find and install Vett themselves.
+/// also find and install Rusinnsikt themselves.
 ///
 /// IMPORTANT: `appleID` is a placeholder. Once you've created the app record
 /// in App Store Connect (even before it's approved or released), go to

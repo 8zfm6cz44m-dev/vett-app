@@ -1,4 +1,4 @@
-# Vett — byggguide
+# Rusinnsikt — byggguide
 
 Kort guide för det som inte är helt självförklarande när du bygger och släpper appen.
 
@@ -29,9 +29,9 @@ com.app.vett.tip.large
 2. Skapa tre **Consumable**-produkter i App Store Connect under appens "In-App Purchases", med exakt ovanstående produkt-ID:n, och sätt pris (t.ex. 19/49/99 kr).
 3. Vänta tills Apple godkänt produkterna (kan ta ett tag första gången) innan de går att hämta i appen.
 
-**Testa lokalt utan App Store Connect:** använd `Vett.storekit` (StoreKit-konfigurationsfil, redan i repot med samma tre produkt-ID:n och testpriser). Den är inte kopplad till schemat som standard — aktivera den via:
+**Testa lokalt utan App Store Connect:** använd `Rusinnsikt.storekit` (StoreKit-konfigurationsfil, redan i repot med samma tre produkt-ID:n och testpriser). Den är inte kopplad till schemat som standard — aktivera den via:
 
-Xcode → Product → Scheme → Edit Scheme… → Run → Options-fliken → StoreKit Configuration → välj `Vett.storekit`.
+Xcode → Product → Scheme → Edit Scheme… → Run → Options-fliken → StoreKit Configuration → välj `Rusinnsikt.storekit`.
 
 Med det aktiverat simulerar Xcode köp lokalt utan att röra riktiga App Store Connect-produkter eller riktiga pengar.
 

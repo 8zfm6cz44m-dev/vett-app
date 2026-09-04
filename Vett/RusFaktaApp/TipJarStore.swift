@@ -14,10 +14,10 @@ import Foundation
 /// (com.app.vett) — create matching consumable in-app purchases in App
 /// Store Connect with these exact identifiers. See README_BUILD_GUIDE.md
 /// step "Donasjoner / tip jar" for the App Store Connect setup steps, and
-/// use Vett.storekit to test purchases locally before you've configured
+/// use Rusinnsikt.storekit to test purchases locally before you've configured
 /// anything in App Store Connect. Not wired into the scheme by default —
 /// enable it via Xcode: Product > Scheme > Edit Scheme > Run > Options >
-/// StoreKit Configuration > Vett.storekit.
+/// StoreKit Configuration > Rusinnsikt.storekit.
 @MainActor
 final class TipJarStore: ObservableObject {
     static let productIDs = [
