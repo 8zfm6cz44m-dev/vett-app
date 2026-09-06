@@ -1,10 +1,17 @@
 import SwiftUI
-import StoreKit
 
-/// Optional support screen. Reached only via a single row in "Om" — never
-/// shown automatically, never blocks any content.
+/// Valgfri støtte — uten App Store-kjøp. In-app-kjøp krever Apples nett
+/// og er bevisst ikke med, så appen kan brukes helt uten internett.
 struct TipJarView: View {
-    @StateObject private var store = TipJarStore()
+    private var supportMailURL: URL {
+        var components = URLComponents()
+        components.scheme = "mailto"
+        components.path = "elofsson.martin@gmail.com"
+        components.queryItems = [
+            URLQueryItem(name: "subject", value: "Støtte til Rusinnsikt")
+        ]
+        return components.url!
+    }
 
     var body: some View {
         ScrollView {
@@ -12,61 +19,28 @@ struct TipJarView: View {
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Støtt Rusinnsikt")
                         .font(.largeTitle.bold())
-                    Text("Rusinnsikt er gratis for alle og vil alltid forbli det — ingen del av faktainnholdet eller nødhjelp-informasjonen er noensinne bak betaling. Hvis du har mulighet og ønsker å støtte videre utvikling og vedlikehold, kan du gi et frivillig bidrag her.")
+                    Text("Rusinnsikt er gratis og skal virke uten internett — fakta, søk og nødhjelp er aldri bak betaling. Derfor er det ingen kjøp i appen (det ville krevd tilkobling til App Store).")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                    Text("Vil du likevel bidra til vedlikehold, send en e-post. Det åpner Mail på telefonen; ingenting sendes før du selv trykker send.")
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                 }
 
-                if store.isLoading {
-                    ProgressView().frame(maxWidth: .infinity)
-                } else if store.products.isEmpty {
-                    Text("Støttealternativer er ikke tilgjengelig akkurat nå.")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                } else {
-                    VStack(spacing: 12) {
-                        ForEach(store.products) { product in
-                            Button {
-                                Task { await store.purchase(product) }
-                            } label: {
-                                HStack {
-                                    Text(product.displayName)
-                                        .font(.headline)
-                                    Spacer()
-                                    Text(product.displayPrice)
-                                        .font(.headline)
-                                }
-                                .padding()
-                                .background(Color(.secondarySystemBackground))
-                                .clipShape(RoundedRectangle(cornerRadius: 12))
-                            }
-                            .foregroundStyle(.primary)
-                            .accessibilityElement(children: .ignore)
-                            .accessibilityLabel("\(product.displayName), \(product.displayPrice)")
-                            .accessibilityAddTraits(.isButton)
-                        }
-                    }
-                }
-
-                if let error = store.errorMessage {
-                    Text(error)
-                        .font(.footnote)
-                        .foregroundStyle(.red)
+                Link(destination: supportMailURL) {
+                    Label("Send e-post om støtte", systemImage: "envelope")
+                        .font(.headline)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.indigo)
+                        .foregroundStyle(.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 14))
                 }
             }
             .padding()
         }
-        // Inline (small) instead of the default large title — the screen
-        // already has its own big "Støtt Rusinnsikt" text right at the top, so a
-        // second large system title with different wording ("Støtt oss")
-        // directly above it looked like a duplicated/mismatched header.
         .navigationTitle("Støtt Rusinnsikt")
         .navigationBarTitleDisplayMode(.inline)
-        .alert("Tusen takk!", isPresented: $store.lastThankYou) {
-            Button("Bare hyggelig", role: .cancel) {}
-        } message: {
-            Text("Bidraget ditt hjelper med å holde Rusinnsikt oppdatert og gratis for alle.")
-        }
     }
 }
 

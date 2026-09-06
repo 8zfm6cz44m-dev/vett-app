@@ -58,6 +58,11 @@ final class SubstanceModelTests: XCTestCase {
         XCTAssertTrue(substance.fuzzyMatchWords.contains("testis"))
     }
 
+    func testTelURL_emptyNumberIsNil() {
+        let empty = EmergencyNumber(label: "Tom", number: "")
+        XCTAssertNil(empty.telURL)
+    }
+
     func testEquatableAndHashable_useOnlyID() {
         let a = makeSubstance(id: "same-id", name: "Navn A")
         let b = makeSubstance(id: "same-id", name: "Navn B")

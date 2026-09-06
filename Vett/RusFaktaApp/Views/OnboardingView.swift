@@ -23,7 +23,8 @@ struct OnboardingView: View {
 
                 infoRow(icon: "checkmark.shield", text: "Innholdet er basert på informasjon fra rusinfo.no (Oslo kommune) og rusopplysningen.no.")
                 infoRow(icon: "exclamationmark.triangle", text: "Målet er å forebygge skader og redde liv — ikke å oppfordre til rusbruk.")
-                infoRow(icon: "lock.shield", text: "Appen krever ingen konto, sender ingen data noe sted, og lagrer ingenting i skyen. Alt skjer lokalt på telefonen din.")
+                infoRow(icon: "wifi.slash", text: "Fakta, søk og nødhjelp ligger i appen. Du trenger ikke internett for å bruke dem.")
+                infoRow(icon: "lock.shield", text: "Appen krever ingen konto, sender ingen data noe sted, og lagrer bare om du har sett denne skjermen. Alt skjer lokalt på telefonen din.")
                 infoRow(icon: "person.crop.circle.badge.exclamationmark", text: "Innholdet omhandler rus og overdoserisiko og er beregnet for personer over 17 år.")
 
                 Spacer(minLength: 12)

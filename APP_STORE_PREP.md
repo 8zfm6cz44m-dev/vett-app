@@ -3,21 +3,15 @@
 Utkast forberedt av Claude 2026-09-04. Alt innhold nedenfor er utkast — les
 igjennom og juster før du bruker det.
 
-## 1. Personvernerklæring (Privacy Policy) — PUBLISERT
+## 1. Personvernerklæring (Privacy Policy)
 
-Publisert som en egen side (personvern + support i ett):
-https://claude.ai/code/artifact/84a0a41b-b1a3-4217-9769-aefaa79f5109
+Full tekst ligger **i appen** (Om → Full personvernerklæring). Appen henter
+ikke personvern fra nett.
 
-**VIKTIG — gjør dette før du limer inn URL-en i App Store Connect:** Claude-
-artefakter er private til du deler dem. Åpne siden, trykk delingsmenyn og
-gjør den offentlig/delbar — ellers kan ikke Apples granskere åpne lenken.
-
-Lenken er også lagt inn i appens "Personvern"-seksjon i Om-fanen (commit
-kommer), og kan brukes i BÅDE "Privacy Policy URL" og "Support URL"-feltene
-i App Store Connect siden siden dekker begge deler.
-
-Vil du heller ha den på en egen domenetilknyttet URL (f.eks. rusinnsikt.no/personvern)
-senere, kan samme HTML-innhold flyttes dit når domenet er satt opp — si ifra.
+**App Store Connect** krever likevel en offentlig URL i feltene Privacy
+Policy URL og Support URL. Kopier innholdet fra `PrivacyPolicyView` til en
+side du eier (f.eks. rusinnsikt.no/personvern) **før** innsending. Ikke bruk
+Claude-artefakter — de kan være private eller forsvinne.
 
 ---
 
@@ -66,8 +60,8 @@ oppfordre til bruk.
 • Fakta om virkning, risiko og skadereduksjon for et bredt utvalg
   rusmidler, hentet og forkortet fra rusinfo.no og rusopplysningen.no
 • Rask tilgang til nødnumre og overdoseveiledning
-• Ingen konto, ingen internettforbindelse kreves, ingen sporing
-• Helt gratis — frivillig, valgfri støtte til utvikleren
+• Ingen konto, ingen sporing. Fakta, søk og nødhjelp virker uten internett
+• Helt gratis — valgfri støtte via e-post, ingen kjøp i appen
 
 Appen er et uavhengig informasjonsprosjekt og er ikke offisielt tilknyttet
 rusinfo.no, rusopplysningen.no, Oslo kommune eller Helsedirektoratet.
@@ -75,8 +69,7 @@ rusinfo.no, rusopplysningen.no, Oslo kommune eller Helsedirektoratet.
 Ved mistanke om overdose eller forgiftning: ring alltid 113 eller
 Giftinformasjonen.
 
-## 5. Support-URL — LØST (samme side som punkt 1)
+## 5. Support-URL
 
-Support-seksjonen og en FAQ er inkludert på samme publiserte side som
-personvernerklæringen (se punkt 1). Samme URL kan brukes i "Support URL"-
-feltet i App Store Connect.
+Bruk samme offentlige side som personvernerklæringen (punkt 1) når den
+finnes. Inntil da: e-post i appen (Om → Gi tilbakemelding).

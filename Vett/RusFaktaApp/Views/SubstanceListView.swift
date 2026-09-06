@@ -43,7 +43,7 @@ nonisolated enum SubstanceGroup: CaseIterable, Hashable {
         case .psykedelika: "Psykedelika og hallusinogener"
         case .dissosiative: "Dissosiative stoffer"
         case .reseptbelagt: "Reseptbelagte legemidler"
-        case .nikotin: "Nikotin og innåndingsmidler"
+        case .nikotin: "Nikotin"
         case .annet: "Andre stoffer"
         }
     }
@@ -80,7 +80,9 @@ nonisolated enum SubstanceGroup: CaseIterable, Hashable {
         if c.contains("reseptbelagt legemiddel") { return .reseptbelagt }
         if c.contains("sentralstimulerende") { return .sentralstimulerende }
         if c.contains("dempende") { return .dempende }
-        if c.contains("nikotinprodukt") || c.contains("innåndingsmiddel") { return .nikotin }
+        if c.contains("nikotinprodukt") { return .nikotin }
+        // Poppers o.l. er innåndingsmidler uten nikotin — ikke samme hylle som snus.
+        if c.contains("innåndingsmiddel") { return .annet }
         return .annet
     }
 }

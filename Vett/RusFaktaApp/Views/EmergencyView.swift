@@ -57,30 +57,31 @@ struct EmergencyView: View {
         }
     }
 
+    @ViewBuilder
     private func callButton(number: EmergencyNumber) -> some View {
-        Link(destination: URL(string: "tel:\(number.number.replacingOccurrences(of: " ", with: ""))")!) {
-            HStack {
-                Image(systemName: "phone.fill")
-                    .accessibilityHidden(true)
-                VStack(alignment: .leading) {
-                    Text(number.label).font(.headline)
-                    Text(number.number).font(.title3.weight(.bold))
-                }
-                Spacer()
+        let row = HStack {
+            Image(systemName: "phone.fill")
+                .accessibilityHidden(true)
+            VStack(alignment: .leading) {
+                Text(number.label).font(.headline)
+                Text(number.number).font(.title3.weight(.bold))
             }
-            .padding()
-            .foregroundStyle(.white)
-            .background(Color.red)
-            .clipShape(RoundedRectangle(cornerRadius: 14))
+            Spacer()
         }
-        // Without this, VoiceOver reads the icon, label, and number as three
-        // separate stops on this — the single most important button in the
-        // app. One combined announcement ("Ambulanse, 113. Ring nå.") is much
-        // faster to act on in an emergency.
+        .padding()
+        .foregroundStyle(.white)
+        .background(Color.red)
+        .clipShape(RoundedRectangle(cornerRadius: 14))
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("\(number.label), \(number.number)")
         .accessibilityHint("Ring nå")
         .accessibilityAddTraits(.isButton)
+
+        if let url = number.telURL {
+            Link(destination: url) { row }
+        } else {
+            row
+        }
     }
 
     private func guidanceSection(title: String, icon: String, steps: [String], tint: Color) -> some View {
@@ -121,24 +122,36 @@ struct EmergencyView: View {
         .clipShape(RoundedRectangle(cornerRadius: 14))
     }
 
+    private func phoneRow(_ number: EmergencyNumber) -> some View {
+        HStack {
+            Text(number.label)
+            Spacer()
+            Text(number.number).fontWeight(.semibold)
+            Image(systemName: "phone")
+                .accessibilityHidden(true)
+        }
+    }
+
     private var allNumbersSection: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("Flere hjelpenumre").font(.headline)
             ForEach(numbers.all) { number in
-                Link(destination: URL(string: "tel:\(number.number.replacingOccurrences(of: " ", with: ""))")!) {
-                    HStack {
-                        Text(number.label)
-                        Spacer()
-                        Text(number.number).fontWeight(.semibold)
-                        Image(systemName: "phone")
-                            .accessibilityHidden(true)
+                if let url = number.telURL {
+                    Link(destination: url) {
+                        phoneRow(number)
                     }
+                    .foregroundStyle(.primary)
+                    .accessibilityElement(children: .ignore)
+                    .accessibilityLabel("\(number.label), \(number.number)")
+                    .accessibilityHint("Ring nå")
+                    .accessibilityAddTraits(.isButton)
+                } else {
+                    // No usable tel: URL — plain text, not announced as a
+                    // button since tapping it does nothing.
+                    phoneRow(number)
+                        .accessibilityElement(children: .ignore)
+                        .accessibilityLabel("\(number.label), \(number.number)")
                 }
-                .foregroundStyle(.primary)
-                .accessibilityElement(children: .ignore)
-                .accessibilityLabel("\(number.label), \(number.number)")
-                .accessibilityHint("Ring nå")
-                .accessibilityAddTraits(.isButton)
                 Divider()
             }
         }

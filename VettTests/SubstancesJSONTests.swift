@@ -49,9 +49,41 @@ final class SubstancesJSONTests: XCTestCase {
     func testEmergencyNumbers_areAllPresent() throws {
         let database = try loadDatabase()
         XCTAssertEqual(database.emergencyNumbers.all.count, 4)
+        XCTAssertEqual(database.emergencyNumbers.ambulance.number, "113")
+        XCTAssertEqual(database.emergencyNumbers.ambulance.telURL, URL(string: "tel:113"))
+        XCTAssertEqual(database.emergencyNumbers.poison.telURL, URL(string: "tel:22591300"))
         for number in database.emergencyNumbers.all {
             XCTAssertFalse(number.number.isEmpty, "\(number.label) has no phone number")
+            XCTAssertNotNil(number.telURL, "\(number.label) must produce a tel: URL")
         }
+    }
+
+    func testSubstanceGroup_poppersIsNotNikotin() throws {
+        let database = try loadDatabase()
+        let poppers = try XCTUnwrap(database.substances.first { $0.id == "poppers" })
+        XCTAssertEqual(SubstanceGroup.forSubstance(poppers), .annet)
+        let snus = try XCTUnwrap(database.substances.first { $0.id == "snus" })
+        XCTAssertEqual(SubstanceGroup.forSubstance(snus), .nikotin)
+        let vape = try XCTUnwrap(database.substances.first { $0.id == "e-sigaretter" })
+        XCTAssertEqual(SubstanceGroup.forSubstance(vape), .nikotin)
+        let cannabis = try XCTUnwrap(database.substances.first { $0.id == "cannabis" })
+        XCTAssertEqual(SubstanceGroup.forSubstance(cannabis), .cannabinoider)
+    }
+
+    func testSubstanceGroup_kratomXylazinNps() throws {
+        let database = try loadDatabase()
+        // Kratom's category string is "Plantebasert stoff (opioid- og
+        // stimulerende virkning)" — contains "opioid", so it lands under
+        // Opioider even though it's plant-based, per forSubstance's
+        // keyword-priority order.
+        let kratom = try XCTUnwrap(database.substances.first { $0.id == "kratom" })
+        XCTAssertEqual(SubstanceGroup.forSubstance(kratom), .opioider)
+        // Xylazine and NPS don't match any of the specific keyword buckets
+        // and fall through to Andre stoffer.
+        let xylazin = try XCTUnwrap(database.substances.first { $0.id == "xylazin" })
+        XCTAssertEqual(SubstanceGroup.forSubstance(xylazin), .annet)
+        let nps = try XCTUnwrap(database.substances.first { $0.id == "nps" })
+        XCTAssertEqual(SubstanceGroup.forSubstance(nps), .annet)
     }
 
     func testDataStore_initializesWithoutCrashing() {

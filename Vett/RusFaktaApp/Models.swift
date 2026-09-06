@@ -17,6 +17,15 @@ nonisolated struct EmergencyNumber: Codable, Identifiable {
     var id: String { label }
     let label: String
     let number: String
+
+    /// Opens the Phone app only — no internet. Digits (and a leading +) are
+    /// kept; spaces and other separators are dropped so `22 59 13 00` becomes
+    /// `tel:22591300`.
+    var telURL: URL? {
+        let digits = number.filter { $0.isNumber || $0 == "+" }
+        guard !digits.isEmpty else { return nil }
+        return URL(string: "tel:\(digits)")
+    }
 }
 
 nonisolated struct EmergencyNumbers: Codable {

@@ -76,7 +76,7 @@ struct SubstanceDetailView: View {
             Label("Tegn på overdose", systemImage: "waveform.path.ecg")
                 .font(.headline)
                 .foregroundStyle(.red)
-            ForEach(substance.overdoseSigns, id: \.self) { sign in
+            ForEach(Array(substance.overdoseSigns.enumerated()), id: \.offset) { _, sign in
                 bulletRow(sign)
             }
             Divider()
@@ -162,8 +162,7 @@ struct SubstanceDetailView: View {
         lines.append("")
         lines.append("Er du i tvil? Ring 113 – uansett.")
         lines.append("")
-        lines.append("Delt fra Rusinnsikt-appen — gratis, nøytral rusinformasjon uten konto eller sporing.")
-        lines.append("Last ned appen: \(AppLinks.appStoreURL.absoluteString)")
+        lines.append("Delt fra Rusinnsikt-appen — gratis, nøytral rusinformasjon uten konto eller sporing. Fakta og nødhjelp ligger i appen.")
         return lines.joined(separator: "\n")
     }
 
@@ -179,11 +178,13 @@ struct SubstanceDetailView: View {
             Text("Det er alltid riktig å ringe. Det er svært sjelden noen får problemer med politiet for å be om hjelp, og helsepersonell har lovpålagt taushetsplikt.")
                 .font(.subheadline)
 
-            Link(destination: URL(string: "tel:113")!) {
-                Label("Ring 113 nå", systemImage: "phone.fill")
-                    .font(.subheadline.weight(.semibold))
+            if let ambulance = URL(string: "tel:113") {
+                Link(destination: ambulance) {
+                    Label("Ring 113 nå", systemImage: "phone.fill")
+                        .font(.subheadline.weight(.semibold))
+                }
+                .padding(.top, 2)
             }
-            .padding(.top, 2)
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -209,7 +210,7 @@ struct SubstanceDetailView: View {
     private func bulletCard(title: String, icon: String, items: [String]) -> some View {
         VStack(alignment: .leading, spacing: 8) {
             Label(title, systemImage: icon).font(.headline)
-            ForEach(items, id: \.self) { item in
+            ForEach(Array(items.enumerated()), id: \.offset) { _, item in
                 bulletRow(item)
             }
         }

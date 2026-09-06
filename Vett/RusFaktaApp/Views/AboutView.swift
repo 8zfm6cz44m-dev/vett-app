@@ -2,6 +2,7 @@ import SwiftUI
 
 struct AboutView: View {
     @EnvironmentObject private var store: DataStore
+    @AppStorage(OnboardingState.hasSeenOnboardingKey) private var hasSeenOnboarding = false
 
     private var feedbackMailURL: URL {
         var components = URLComponents()
@@ -13,13 +14,17 @@ struct AboutView: View {
         return components.url!
     }
 
+    private var shareAppText: String {
+        """
+        Rusinnsikt er et nøytralt oppslagsverk om rusmidler og risiko — gratis, uten konto og uten sporing. Fakta og nødhjelp ligger i appen.
+
+        Ved mistanke om overdose: ring 113.
+        """
+    }
+
     var body: some View {
         List {
             Section {
-                // Large, bold title in the same style as the other tabs
-                // (EmergencyView, TipJarView) — matches .primary, so it's
-                // black in light mode and white in dark mode, instead of
-                // the small grey List section-header treatment.
                 Text("Om Rusinnsikt")
                     .font(.largeTitle.bold())
                     .listRowSeparator(.hidden)
@@ -28,23 +33,21 @@ struct AboutView: View {
             }
 
             Section("Kilder") {
-                Link(destination: URL(string: "https://rusinfo.no")!) {
-                    Label("rusinfo.no (Oslo kommune)", systemImage: "link")
-                }
-                Link(destination: URL(string: "https://rusopplysningen.no")!) {
-                    Label("rusopplysningen.no", systemImage: "link")
-                }
-                Text("Innholdet i appen er skrevet om og forkortet fra disse kildene. Besøk sidene direkte for fullstendig, oppdatert informasjon, chat med rådgiver, eller stoffanalyse.")
+                Label("rusinfo.no (Oslo kommune)", systemImage: "building.columns")
+                Label("rusopplysningen.no", systemImage: "building.columns")
+                Text("Innholdet i appen er skrevet om og forkortet fra disse kildene og ligger ferdig i appen. Appen åpner ikke nettstedene. For chat, stoffanalyse eller fullstendig oppdatert tekst må du selv slå opp kildene i en nettleser.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
 
             Section("Personvern") {
                 Label("Ingen konto, ingen innlogging", systemImage: "person.crop.circle.badge.xmark")
-                Label("Ingen internettilkobling kreves for å bruke appen", systemImage: "wifi.slash")
+                Label("Fakta, søk og nødhjelp krever ikke internett", systemImage: "wifi.slash")
                 Label("Ingen analyse- eller sporingsverktøy", systemImage: "eye.slash")
-                Label("Appen lagrer ingenting om deg lokalt", systemImage: "iphone")
-                Link(destination: URL(string: "https://claude.ai/code/artifact/84a0a41b-b1a3-4217-9769-aefaa79f5109")!) {
+                Label("Lokalt lagres kun om du har sett velkomstskjermen", systemImage: "iphone")
+                NavigationLink {
+                    PrivacyPolicyView()
+                } label: {
                     Label("Full personvernerklæring", systemImage: "doc.text")
                 }
             }
@@ -56,40 +59,48 @@ struct AboutView: View {
                     Label("Støtt Rusinnsikt (valgfritt)", systemImage: "heart")
                 }
             } footer: {
-                Text("Helt frivillig — appen er og forblir gratis for alle, uansett.")
+                Text("Helt frivillig — appen er og forblir gratis. Ingen kjøp i appen.")
                     .font(.caption2)
             }
 
             Section {
-                // An explicit preview avoids ShareLink's default behaviour of
-                // fetching link-preview metadata over the network before it
-                // can show the share sheet — without this, tapping the
-                // button could visibly stall for several seconds.
                 ShareLink(
-                    item: AppLinks.appStoreURL,
-                    preview: SharePreview("Rusinnsikt – Rusinformasjon", image: Image(systemName: "book.closed.fill"))
+                    item: shareAppText,
+                    preview: SharePreview("Rusinnsikt – rusinformasjon")
                 ) {
                     Label("Del appen med andre", systemImage: "square.and.arrow.up")
-                }
-                Link(destination: AppLinks.writeReviewURL) {
-                    Label("Vurder Rusinnsikt i App Store", systemImage: "star")
                 }
             } header: {
                 Text("Spre appen")
             } footer: {
-                Text("Jo flere som vet at Rusinnsikt finnes, jo flere kan få riktig informasjon i stedet for å google seg fram.")
+                Text("Deler vanlig tekst — ingen App Store-lenke og ingen nettforespørsel.")
                     .font(.caption2)
             }
 
             Section("Hjelpenumre") {
                 ForEach(store.database.emergencyNumbers.all) { number in
-                    HStack {
-                        Text(number.label)
-                        Spacer()
-                        Text(number.number).foregroundStyle(.secondary)
+                    if let url = number.telURL {
+                        Link(destination: url) {
+                            HStack {
+                                Text(number.label)
+                                Spacer()
+                                Text(number.number).foregroundStyle(.secondary)
+                            }
+                        }
+                        .foregroundStyle(.primary)
+                        .accessibilityElement(children: .ignore)
+                        .accessibilityLabel("\(number.label), \(number.number)")
+                        .accessibilityHint("Ring nå")
+                        .accessibilityAddTraits(.isButton)
+                    } else {
+                        HStack {
+                            Text(number.label)
+                            Spacer()
+                            Text(number.number).foregroundStyle(.secondary)
+                        }
+                        .accessibilityElement(children: .ignore)
+                        .accessibilityLabel("\(number.label), \(number.number)")
                     }
-                    .accessibilityElement(children: .ignore)
-                    .accessibilityLabel("\(number.label), \(number.number)")
                 }
             }
 
@@ -98,7 +109,17 @@ struct AboutView: View {
                     Label("Gi tilbakemelding", systemImage: "envelope")
                 }
             } footer: {
-                Text("Fant du en feil, eller savner du et stoff eller en funksjon? Send gjerne en e-post.")
+                Text("Åpner Mail-appen. Ingenting sendes før du selv trykker send.")
+                    .font(.caption2)
+            }
+
+            Section {
+                Button("Nullstill velkomstskjerm") {
+                    store.clearAllLocalData()
+                    hasSeenOnboarding = false
+                }
+            } footer: {
+                Text("Sletter den ene lokale innstillingen. Velkomstskjermen vises neste gang du åpner appen.")
                     .font(.caption2)
             }
 
@@ -115,11 +136,6 @@ struct AboutView: View {
             }
         }
         .navigationTitle("")
-        // Inline (small) instead of the default large title — the content
-        // already has its own big "Om Rusinnsikt" heading right at the top, so a
-        // second large system title with different wording ("Om") directly
-        // above it looked like a duplicated/mismatched header. Same fix as
-        // TipJarView.
         .navigationBarTitleDisplayMode(.inline)
     }
 }

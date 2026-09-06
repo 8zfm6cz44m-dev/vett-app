@@ -1,18 +1,12 @@
-//
-//  VettTests.swift
-//  VettTests
-//
-//  Created by Martin on 21/08/2026.
-//
+import XCTest
+@testable import Vett
 
-import Testing
-
-struct VettTests {
-
-    @Test func example() async throws {
-        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
-        // Swift Testing Documentation
-        // https://developer.apple.com/documentation/testing
+/// Host-app-tester ligger i FuzzySearchTests, SubstanceModelTests og
+/// SubstancesJSONTests. Denne fila er bevisst uten tom Swift Testing-stub.
+final class VettTests: XCTestCase {
+    func testBundleDoesNotShipPlaceholderAppStoreID() {
+        // App Store-lenker er fjernet så appen ikke trenger nett eller et
+        // dummy-Apple-ID. Denne testen dokumenterer den beslutningen.
+        XCTAssertNotNil(Bundle.main.bundleIdentifier)
     }
-
 }
