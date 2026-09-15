@@ -119,7 +119,7 @@ selv til symbolet i visningen.)
 
 Gjennomgått og bekreftet/rettet før innsending:
 
-- **Personvern/support-side**: `https://sites.google.com/view/rusinnsikt-personvern/` er **live og publisert** (bekreftet). Inneholder personvernerklæring + kontakt-e-post (elofsson.martin@gmail.com). Kan brukes som both Privacy Policy URL og Support URL i App Store Connect, slik punkt 1/5 sier.
+- **Personvern/support-side**: `https://sites.google.com/view/rusinnsikt-personvern/` er **live og publisert**. Domenet rusinnsikt.no er nå kjøpt (Loopia), men siden ligger fortsatt på Google Sites — det er fortsatt greit som Privacy Policy URL/Support URL i App Store Connect. NB: siden viser fortsatt elofsson.martin@gmail.com som kontakt-e-post — oppdater den manuelt til post@rusinnsikt.no når e-postvidaresendingen er satt opp (se punkt 9).
 - **Skjermdumper**: 6 stk, 1284×2778 px (iPhone 6.5"-klassen) i `App Store Screenshots/`. Bekreftet gyldig og tilstrekkelig format mot Apples offisielle screenshot-spesifikasjon (developer.apple.com) — ingen flere størrelser er påkrevd for innsending.
 - **App-ikon**: 1024×1024, RGB uten alpha-kanal — korrekt for App Store-markedsføringsikonet.
 - **Eksportoverholdelse**: `ITSAppUsesNonExemptEncryption = NO` er satt i prosjektet — matcher "ingen ikke-unntatt kryptering"-svaret i App Store Connect.
@@ -142,3 +142,27 @@ Gjennomgått og bekreftet/rettet før innsending:
 8. Lim inn App Review-notatet fra punkt 2 under App Review Information → Notes, og fyll i din e-post/telefon som kontakt der.
 9. Sett pris til Gratis, velg tilgjengelige land/regioner.
 10. Trykk **Submit for Review**.
+
+## 9. Domene og e-post (rusinnsikt.no) — 2026-09-15
+
+Domenet **rusinnsikt.no** er kjøpt hos Loopia (parkert, ingen hjemmeside ennå).
+Kontakt-e-posten i appen og i `docs/`-tekstene er byttet fra den private
+Gmail-adressen til **post@rusinnsikt.no** i koden (committet). For at den
+faktisk skal virke:
+
+1. Logg inn i Loopia-kundesonen → **"Opprett en e-postadresse"** →
+   **"Lage en e-postadresse som sender videre til f.eks. Gmail eller Hotmail"**.
+2. Velg domenet **rusinnsikt.no**, skriv `post` som ønsket adresse, og sett
+   videresending til `elofsson.martin@gmail.com`.
+3. Dette er **gratis** siden domenet allerede bruker LoopiaDNS (bekreftet i
+   skjermbildet — "Still inn navneserver" var allerede haket av). En egen
+   betalt e-postboks er IKKE nødvendig, bare videresendingen.
+4. Kan ta noen timer før den fungerer. Test ved å sende ett testmail.
+5. Oppdater kontakt-e-posten manuelt på den live Google Sites-siden
+   (personvern/support) til post@rusinnsikt.no — den siden ligger utenfor
+   git og må redigeres direkte i Google Sites.
+
+Apple Developer-kontoen (Team ID UZ46LP2XU5, Individual) beholdes som den er
+for denne innsendingen — et eventuelt Organization-konto med orgnummeret er
+en egen, separat prosess (nytt Team ID, D-U-N-S-nummer, Apple-verifisering
+1–3 uker) som kan gjøres senere uten å påvirke lanseringen nå.

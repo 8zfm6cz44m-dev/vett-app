@@ -54,10 +54,10 @@ fun SupportScreen() {
         Button(
             onClick = {
                 val intent = Intent(Intent.ACTION_SENDTO).apply {
-                    data = Uri.parse("mailto:elofsson.martin@gmail.com")
+                    data = Uri.parse("mailto:post@rusinnsikt.no")
                     putExtra(Intent.EXTRA_SUBJECT, "Støtte til Rusinnsikt")
                 }
-                safeStartActivity(context, intent, "Fant ingen e-post-app. Send til elofsson.martin@gmail.com manuelt.")
+                safeStartActivity(context, intent, "Fant ingen e-post-app. Send til post@rusinnsikt.no manuelt.")
             },
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(14.dp),

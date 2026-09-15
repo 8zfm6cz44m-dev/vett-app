@@ -152,10 +152,10 @@ fun OmScreen(onPrivacyPolicy: () -> Unit, onSupport: () -> Unit, onOnboardingRes
                     .fillMaxWidth()
                     .clickable {
                         val intent = Intent(Intent.ACTION_SENDTO).apply {
-                            data = Uri.parse("mailto:elofsson.martin@gmail.com")
+                            data = Uri.parse("mailto:post@rusinnsikt.no")
                             putExtra(Intent.EXTRA_SUBJECT, "Tilbakemelding om Rusinnsikt-appen")
                         }
-                        safeStartActivity(context, intent, "Fant ingen e-post-app. Send til elofsson.martin@gmail.com manuelt.")
+                        safeStartActivity(context, intent, "Fant ingen e-post-app. Send til post@rusinnsikt.no manuelt.")
                     }
                     .background(MaterialTheme.colorScheme.surfaceVariant, RoundedCornerShape(14.dp))
                     .padding(16.dp),
