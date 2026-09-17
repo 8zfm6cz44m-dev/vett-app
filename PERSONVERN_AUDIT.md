@@ -86,7 +86,7 @@ Appen skickar ingenting någonstans, ringer aldrig hem, har inga spårningsverkt
 ```
 bash scripts/personvern-sjekk.sh
 ```
-Skriptet avslutar med fel om något av de absoluta kraven i `CLAUDE.md` bryts: nätverk, beroenden, identifierare, behörigheter, lagring utöver en boolean, backup-regler, loggning, systemintegrationer, app-växlar-skydd, privacy manifest, identiskt innehåll på båda plattformarna. Lägg aldrig till ett undantag i skriptet utan att först uppdatera den här rapporten.
+Skriptet avslutar med fel om något av de absoluta kraven i `CLAUDE.md` bryts: nätverk, beroenden, identifierare, behörigheter, lagring utöver en boolean, backup-regler, loggning, systemintegrationer, app-växlar-skydd, privacy manifest, identiskt innehåll på båda plattformarna. Kör det i Terminal på Macen **efter** Product → Archive: då kontrolleras även den färdiga iOS-binären (`nm -u`/`otool -L`) — det är iOS-motsvarigheten till Androids saknade INTERNET-behörighet. Lägg aldrig till ett undantag i skriptet utan att först uppdatera den här rapporten.
 
 Manuellt, en gång per release, i App Store Connect: App Privacy = "No, we do not collect data from this app". I Google Play Console (när Android publiceras): Data safety = "No data collected", "No data shared".
 
