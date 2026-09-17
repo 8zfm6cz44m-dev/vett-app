@@ -22,7 +22,7 @@ struct PrivacyPolicyView: View {
 
                 section("Kilder", "Teksten er forkortet fra offentlige kilder (rusinfo.no / Oslo kommune og rusopplysningen.no). Appen åpner ikke disse nettstedene. For fullstendig og oppdatert informasjon, chat eller stoffanalyse må du selv åpne kildene i en nettleser.")
 
-                section("Kontakt", "Spørsmål om personvern: post@rusinnsikt.no")
+                section("Kontakt", "Spørsmål om personvern: info@rusinnsikt.no")
 
                 Text("Rusinnsikt er et uavhengig prosjekt og er ikke offisielt tilknyttet rusinfo.no, rusopplysningen.no, Oslo kommune eller Helsedirektoratet.")
                     .font(.caption)

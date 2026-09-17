@@ -108,7 +108,7 @@ og annonsering. Ingen egen landingsside er nødvendig for lansering.
 
 **Copyright-feltet i App Store Connect (under App Information):**
 
-`2026 Martin Elofsson`
+`2026 Devlyn`
 
 (Formatet Apple forventer er år + rettighetshaver, uten "©" — Apple legger
 selv til symbolet i visningen.)
@@ -119,7 +119,7 @@ selv til symbolet i visningen.)
 
 Gjennomgått og bekreftet/rettet før innsending:
 
-- **Personvern/support-side**: `https://sites.google.com/view/rusinnsikt-personvern/` er **live og publisert**. Domenet rusinnsikt.no er nå kjøpt (Loopia), men siden ligger fortsatt på Google Sites — det er fortsatt greit som Privacy Policy URL/Support URL i App Store Connect. NB: siden viser fortsatt elofsson.martin@gmail.com som kontakt-e-post — oppdater den manuelt til post@rusinnsikt.no når e-postvidaresendingen er satt opp (se punkt 9).
+- **Personvern/support-side**: `https://sites.google.com/view/rusinnsikt-personvern/` er **live og publisert**. Domenet rusinnsikt.no er nå kjøpt (Loopia), men siden ligger fortsatt på Google Sites — det er fortsatt greit som Privacy Policy URL/Support URL i App Store Connect. NB: siden viser fortsatt elofsson.martin@gmail.com som kontakt-e-post — oppdater den manuelt til info@rusinnsikt.no når e-postvidaresendingen er satt opp (se punkt 9).
 - **Skjermdumper**: 6 stk, 1284×2778 px (iPhone 6.5"-klassen) i `App Store Screenshots/`. Bekreftet gyldig og tilstrekkelig format mot Apples offisielle screenshot-spesifikasjon (developer.apple.com) — ingen flere størrelser er påkrevd for innsending.
 - **App-ikon**: 1024×1024, RGB uten alpha-kanal — korrekt for App Store-markedsføringsikonet.
 - **Eksportoverholdelse**: `ITSAppUsesNonExemptEncryption = NO` er satt i prosjektet — matcher "ingen ikke-unntatt kryptering"-svaret i App Store Connect.
@@ -147,22 +147,30 @@ Gjennomgått og bekreftet/rettet før innsending:
 
 Domenet **rusinnsikt.no** er kjøpt hos Loopia (parkert, ingen hjemmeside ennå).
 Kontakt-e-posten i appen og i `docs/`-tekstene er byttet fra den private
-Gmail-adressen til **post@rusinnsikt.no** i koden (committet). For at den
+Gmail-adressen til **info@rusinnsikt.no** i koden (committet). For at den
 faktisk skal virke:
 
 1. Logg inn i Loopia-kundesonen → **"Opprett en e-postadresse"** →
    **"Lage en e-postadresse som sender videre til f.eks. Gmail eller Hotmail"**.
-2. Velg domenet **rusinnsikt.no**, skriv `post` som ønsket adresse, og sett
+2. Velg domenet **rusinnsikt.no**, skriv `info` som ønsket adresse, og sett
    videresending til `elofsson.martin@gmail.com`.
 3. Dette er **gratis** siden domenet allerede bruker LoopiaDNS (bekreftet i
    skjermbildet — "Still inn navneserver" var allerede haket av). En egen
    betalt e-postboks er IKKE nødvendig, bare videresendingen.
 4. Kan ta noen timer før den fungerer. Test ved å sende ett testmail.
 5. Oppdater kontakt-e-posten manuelt på den live Google Sites-siden
-   (personvern/support) til post@rusinnsikt.no — den siden ligger utenfor
+   (personvern/support) til info@rusinnsikt.no — den siden ligger utenfor
    git og må redigeres direkte i Google Sites.
 
 Apple Developer-kontoen (Team ID UZ46LP2XU5, Individual) beholdes som den er
 for denne innsendingen — et eventuelt Organization-konto med orgnummeret er
 en egen, separat prosess (nytt Team ID, D-U-N-S-nummer, Apple-verifisering
 1–3 uker) som kan gjøres senere uten å påvirke lanseringen nå.
+
+## 10. Utvikler-/utgivernavn — 2026-09-17
+
+Martins beslutning: der appens utvikler eller utgiver nevnes, skal det stå **Devlyn** og ingenting annet. Gjennomført i appens support-/personverntekster (`docs/`) og i Copyright-feltet (punkt 6: `2026 Devlyn`). Selve appen nevner ingen utvikler ved navn (kun «appens utvikler» i ansvarsfraskrivelsen).
+
+**Én ting som ikke kan endres fra koden:** App Store viser alltid navnet på Apple Developer-kontoen som «Selger»/utvikler under appen. Med dagens Individual-konto (Team ID UZ46LP2XU5) blir det **Martin Elofsson**, og det kan ikke overstyres. Skal det stå Devlyn i App Store, kreves en Organization-innmelding (org.nr + D-U-N-S, Apples verifisering, typisk 1–3 uker) og at appen flyttes til det teamet — den prosessen er bevisst utsatt til etter første lansering. Google Play lar derimot utviklernavnet settes fritt i Play Console («Devlyn») når Android-versjonen publiseres.
+
+Kontakt-e-post i appen og dokumentene er nå **info@rusinnsikt.no** (opprettet i Loopia 2026-09-17). Google Sites-siden må fortsatt oppdateres manuelt til samme adresse og til «Utgiver: Devlyn».

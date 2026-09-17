@@ -7,7 +7,7 @@ struct AboutView: View {
     private var feedbackMailURL: URL {
         var components = URLComponents()
         components.scheme = "mailto"
-        components.path = "post@rusinnsikt.no"
+        components.path = "info@rusinnsikt.no"
         components.queryItems = [
             URLQueryItem(name: "subject", value: "Tilbakemelding om Rusinnsikt-appen")
         ]

@@ -61,7 +61,7 @@ Praktisk konsekvens:
 
 **D. Skärmtid / Family Sharing (iOS) och Digital Wellbeing / Family Link (Android).** Den som har Skärmtid-koden eller är familjeorganisatör kan se appanvändning ("Rusinnsikt, 12 min"). Relevant för unga användare med föräldrakontroll. Kan inte påverkas av appen.
 
-**E. Sådant användaren själv gör.** Ringer man 113 hamnar samtalet i samtalsloggen. Delar man en stoffside via iMessage/Messenger finns texten i den appen. Skickar man e-post till post@rusinnsikt.no finns den i Skickat. Allt detta är utanför appen och kräver aktiv handling.
+**E. Sådant användaren själv gör.** Ringer man 113 hamnar samtalet i samtalsloggen. Delar man en stoffside via iMessage/Messenger finns texten i den appen. Skickar man e-post till info@rusinnsikt.no finns den i Skickat. Allt detta är utanför appen och kräver aktiv handling.
 
 **F. Synlighet på hemskärmen/i App Library, Siri-förslag.** Ikonen och namnet "Rusinnsikt" syns för den som håller i telefonen. (Nu utan att innehållet syns i app-växlaren.)
 
