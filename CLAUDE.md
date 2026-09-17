@@ -13,7 +13,7 @@
 
 Appens hela existensberättigande är att den är 100 % anonym. Den ska kunna ligga på en jobbmobil utan att appen själv lämnar ett enda spår utanför telefonen. Därför:
 
-1. **Noll nätverk.** Ingen `URLSession`/`URLRequest`/WebView på iOS. Android-manifestet ska ALDRIG få `android.permission.INTERNET` — det är den hårdaste garantin som finns (OS:et blockerar då varje socket, även från bibliotek). Om en funktion "behöver internet" är svaret nej.
+1. **Noll nätverk.** Ingen `URLSession`/`URLRequest`/WebView på iOS. Android-manifestet ska ALDRIG få `android.permission.INTERNET` — det är den hårdaste garantin som finns (OS:et blockerar då varje socket, även från bibliotek). Om en funktion "behöver internet" är svaret nej. iOS har ingen motsvarande behörighet (alla iOS-appar får använda nätet), så där är garantin: noll nätverkskod i källan, noll beroenden, och kontrollskriptets binärkontroll (`nm -u`/`otool -L` på Release-binären) som visar att inga nätverksklasser refereras eller länkas.
 2. **Noll tredjepartsberoenden.** iOS: inga Swift-paket, inga Pods. Android: endast AndroidX/Compose/Material från Google + `org.json` i tester. Ingen Firebase, Crashlytics, analys, annons-SDK, crash-rapportering, "bara statistik".
 3. **Noll identifierare.** Aldrig `identifierForVendor`, IDFA, ANDROID_ID, Advertising ID, App Tracking Transparency.
 4. **Noll konto, noll IAP, noll Play Billing/StoreKit.** Stöd sker via `mailto:` som användaren själv skickar.

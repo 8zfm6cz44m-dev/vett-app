@@ -58,6 +58,22 @@ grep -q 'PrivacyCover' "$IOS/RusFaktaApp.swift" && ok "iOS: PrivacyCover finns i
 grep -q 'setRecentsScreenshotEnabled(false)' "$AND/java/no/rusinnsikt/app/MainActivity.kt" && ok "Android: setRecentsScreenshotEnabled(false) finns" || bad "Android: setRecentsScreenshotEnabled saknas"
 none "FLAG_SECURE används inte (skulle blockera skärmdumpar av nödhjälp)" "^[[:space:]]*[^[:space:]/].*FLAG_SECURE" $SRC_AND
 
+echo "== iOS-binär (körs bara på Mac när en Release-build finns) =="
+# iOS har ingen motsvarighet till Androids INTERNET-behörighet: alla iOS-appar
+# får använda nätet. Närmaste bevis är att den kompilerade binären inte
+# refererar en enda nätverksklass. Bygg/arkivera först (Product > Archive),
+# så kontrolleras den senaste Release-binären i DerivedData eller i arkivet.
+BIN=$(ls -t ~/Library/Developer/Xcode/DerivedData/Vett-*/Build/Products/Release-iphoneos/Rusinnsikt.app/Rusinnsikt \
+        ~/Library/Developer/Xcode/Archives/*/*.xcarchive/Products/Applications/Rusinnsikt.app/Rusinnsikt 2>/dev/null | head -1)
+if [ -n "$BIN" ] && command -v nm >/dev/null 2>&1; then
+  if nm -u "$BIN" 2>/dev/null | grep -qiE "NSURLSession|NSURLConnection|CFNetwork|NWConnection|NWBrowser|WKWebView|SFSafariViewController|CFReadStreamCreateForHTTP|getaddrinfo|connect\$"; then
+    bad "iOS-binären refererar nätverkssymboler: $BIN"; nm -u "$BIN" | grep -iE "NSURLSession|CFNetwork|NWConnection|WKWebView" | head -5 | sed 's/^/          /'
+  else ok "iOS-binären refererar inga nätverksklasser ($BIN)"; fi
+  if otool -L "$BIN" 2>/dev/null | grep -qiE "CFNetwork|WebKit|Network\.framework"; then bad "iOS-binären länkar CFNetwork/WebKit/Network.framework"; else ok "iOS-binären länkar varken CFNetwork, WebKit eller Network.framework"; fi
+else
+  printf '  SKIP  Ingen Release-binär hittad eller nm saknas (kör skriptet i Terminal på Macen efter Product > Archive)\n'
+fi
+
 echo "== Privacy manifest & innehåll =="
 grep -A1 'NSPrivacyTracking</key>' "$IOS/PrivacyInfo.xcprivacy" | grep -q '<false/>' && ok "PrivacyInfo: NSPrivacyTracking=false" || bad "PrivacyInfo: NSPrivacyTracking är inte false"
 grep -A1 'NSPrivacyCollectedDataTypes' "$IOS/PrivacyInfo.xcprivacy" | grep -q '<array/>' && ok "PrivacyInfo: inga insamlade datatyper" || bad "PrivacyInfo: insamlade datatyper deklarerade"
