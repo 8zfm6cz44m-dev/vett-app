@@ -2,7 +2,7 @@
 
 **Datum:** 2026-09-17
 **Omfattning:** All källkod, all konfiguration och alla "regler" i både iOS-appen (`Vett/RusFaktaApp`, `Vett.xcodeproj`) och Android-appen (`android/`), per commit `739f92d`.
-**Metod:** Varje källfil har lästs rad för rad (17 Swift-/Kotlin-filer, manifest, privacy manifest, byggfiler, beroendelista, backup-regler, projektinställningar), kompletterat med en mekanisk grep-kontroll mot 36 kända läckagevektorer (`scripts/personvern-sjekk.sh`). Plattformspåståenden är kontrollerade mot Apples, Googles och Microsofts (Intune) egen dokumentation.
+**Metod:** Varje källfil har lästs rad för rad (samtliga 27 Swift-/Kotlin-filer: 12 iOS, 15 Android, manifest, privacy manifest, byggfiler, beroendelista, backup-regler, projektinställningar), kompletterat med en mekanisk grep-kontroll mot 36 kända läckagevektorer (`scripts/personvern-sjekk.sh`). Plattformspåståenden är kontrollerade mot Apples, Googles och Microsofts (Intune) egen dokumentation.
 
 ---
 
