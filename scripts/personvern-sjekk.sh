@@ -63,8 +63,16 @@ echo "== iOS-binär (körs bara på Mac när en Release-build finns) =="
 # får använda nätet. Närmaste bevis är att den kompilerade binären inte
 # refererar en enda nätverksklass. Bygg/arkivera först (Product > Archive),
 # så kontrolleras den senaste Release-binären i DerivedData eller i arkivet.
-BIN=$(ls -t ~/Library/Developer/Xcode/DerivedData/Vett-*/Build/Products/Release-iphoneos/Rusinnsikt.app/Rusinnsikt \
-        ~/Library/Developer/Xcode/Archives/*/*.xcarchive/Products/Applications/Rusinnsikt.app/Rusinnsikt 2>/dev/null | head -1)
+# Hittar senaste Rusinnsikt-binären (bundle-id no.rusinnsikt.app) i Xcode-arkiv
+# eller DerivedData. Tål mellanslag i arkivnamn ("Rusinnsikt 2026-09-17, 20.15.xcarchive").
+BIN=""
+while IFS= read -r plist; do
+  [ -z "$plist" ] && continue
+  if grep -q "no.rusinnsikt.app" "$plist" 2>/dev/null; then
+    app=$(dirname "$plist"); exe=$(/usr/libexec/PlistBuddy -c "Print :CFBundleExecutable" "$plist" 2>/dev/null)
+    [ -n "$exe" ] && [ -f "$app/$exe" ] && { BIN="$app/$exe"; break; }
+  fi
+done < <(find ~/Library/Developer/Xcode/Archives ~/Library/Developer/Xcode/DerivedData -path "*.app/Info.plist" -not -path "*Simulator*" -not -path "*iphonesimulator*" 2>/dev/null | xargs -I{} stat -f "%m %N" {} 2>/dev/null | sort -rn | cut -d" " -f2-)
 if [ -n "$BIN" ] && command -v nm >/dev/null 2>&1; then
   if nm -u "$BIN" 2>/dev/null | grep -qiE "NSURLSession|NSURLConnection|CFNetwork|NWConnection|NWBrowser|WKWebView|SFSafariViewController|CFReadStreamCreateForHTTP|getaddrinfo|connect\$"; then
     bad "iOS-binären refererar nätverkssymboler: $BIN"; nm -u "$BIN" | grep -iE "NSURLSession|CFNetwork|NWConnection|WKWebView" | head -5 | sed 's/^/          /'
