@@ -2,6 +2,7 @@
 
 package no.rusinnsikt.app
 
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -65,6 +66,15 @@ private val tabs = listOf(
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // PERSONVERN: ikke vis et bilde av appens innhold (f.eks. den sist
+        // åpnede stoffsiden) i «Nylige apper»-oversikten. Android 13+ kan
+        // skjule bare miniatyrbildet uten å blokkere skjermbilder — brukere
+        // skal fortsatt kunne ta skjermbilde av nødhjelp for å dele det.
+        // FLAG_SECURE ville også blokkert skjermbilder og er derfor bevisst
+        // ikke brukt. Speiler PrivacyCover i iOS-appens RusFaktaApp.swift.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            setRecentsScreenshotEnabled(false)
+        }
         enableEdgeToEdge()
         setContent {
             RusinnsiktTheme {

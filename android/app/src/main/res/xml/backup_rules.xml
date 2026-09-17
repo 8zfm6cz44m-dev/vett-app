@@ -1,13 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-   Sample backup rules file; uncomment and customize as necessary.
-   See https://developer.android.com/guide/topics/data/autobackup
-   for details.
-   Note: This file is ignored for devices older than API 31
-   See https://developer.android.com/about/versions/12/backup-restore
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+   Rusinnsikt: brukes av Android 11 og eldre (API 30 og lavere) via
+   android:fullBackupContent. Android 12+ bruker data_extraction_rules.xml.
+   android:allowBackup="false" i manifestet slår backup av; disse reglene
+   ekskluderer i tillegg alt eksplisitt, i tilfelle attributtet noen gang
+   endres ved et uhell.
 -->
 <full-backup-content>
-    <!--
-   <include domain="sharedpref" path="."/>
-   <exclude domain="sharedpref" path="device.xml"/>
--->
+    <exclude domain="root" path="." />
+    <exclude domain="file" path="." />
+    <exclude domain="database" path="." />
+    <exclude domain="sharedpref" path="." />
+    <exclude domain="external" path="." />
 </full-backup-content>

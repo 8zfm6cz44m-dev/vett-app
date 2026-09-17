@@ -1,19 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-   Sample data extraction rules file; uncomment and customize as necessary.
-   See https://developer.android.com/about/versions/12/backup-restore#xml-changes
-   for details.
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+   Rusinnsikt: ingenting fra appen skal noen gang havne i en sky-backup,
+   i en enhet-til-enhet-overføring eller i en overføring til iOS.
+
+   Android 12+ (API 31+) leser DENNE filen, ikke backup_rules.xml.
+   android:allowBackup="false" i manifestet slår av sky-backup, men Googles
+   dokumentasjon sier at enhet-til-enhet-overføring likevel kan være aktiv
+   på enkelte produsenters enheter, og at en modus uten regler er "fully
+   enabled for all content". Derfor ekskluderes hvert eneste lagringsområde
+   eksplisitt i hver modus — belte og bukseseler.
+
+   Det eneste appen lagrer er én boolean (om velkomstskjermen er sett) i
+   SharedPreferences. Den er ufarlig, men prinsippet er absolutt: null spor
+   utenfor telefonen.
 -->
 <data-extraction-rules>
-    <cloud-backup>
-        <!-- TODO: Use <include> and <exclude> to control what is backed up.
-        <include .../>
-        <exclude .../>
-        -->
+    <cloud-backup disableIfNoEncryptionCapabilities="true">
+        <exclude domain="root" path="." />
+        <exclude domain="file" path="." />
+        <exclude domain="database" path="." />
+        <exclude domain="sharedpref" path="." />
+        <exclude domain="external" path="." />
     </cloud-backup>
-    <!--
     <device-transfer>
-        <include .../>
-        <exclude .../>
+        <exclude domain="root" path="." />
+        <exclude domain="file" path="." />
+        <exclude domain="database" path="." />
+        <exclude domain="sharedpref" path="." />
+        <exclude domain="external" path="." />
     </device-transfer>
-    -->
 </data-extraction-rules>
