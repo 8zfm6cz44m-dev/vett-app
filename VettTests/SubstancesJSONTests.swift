@@ -93,4 +93,40 @@ final class SubstancesJSONTests: XCTestCase {
         let store = DataStore()
         XCTAssertFalse(store.substances.isEmpty)
     }
+
+    // MARK: - Risikoreduksjon
+
+    func testGeneralRiskReductionIsPresent() throws {
+        let database = try loadDatabase()
+        let rr = database.generalRiskReduction
+        XCTAssertFalse(rr.title.isEmpty)
+        XCTAssertFalse(rr.intro.isEmpty)
+        XCTAssertGreaterThanOrEqual(rr.rules.count, 5)
+        XCTAssertFalse(rr.sourceNote.isEmpty)
+    }
+
+    func testHighRiskSubstancesHaveRiskReduction() throws {
+        let database = try loadDatabase()
+        for id in ["ghb", "mdma", "opioider", "nye-opioider", "benzodiazepiner", "alkohol", "kokain", "ketamin"] {
+            let s = try XCTUnwrap(database.substances.first { $0.id == id }, "\(id) missing")
+            XCTAssertFalse((s.riskReduction ?? []).isEmpty, "\(id) should have riskReduction")
+        }
+    }
+
+    /// Apple-retningslinje 1.4.2/1.4.3 og CLAUDE.md: rådene skal aldri
+    /// inneholde doser eller mengder. En tallverdi etterfulgt av en
+    /// masse-/volumenhet er en dose — og skal ikke finnes i teksten.
+    func testRiskReductionNeverContainsDoses() throws {
+        let database = try loadDatabase()
+        let dosePattern = try NSRegularExpression(
+            pattern: #"\d+([.,]\d+)?\s?(mg|ml|g|gram|µg|mikrogram|milligram|milliliter|dl|cl)\b"#,
+            options: [.caseInsensitive]
+        )
+        var texts = database.generalRiskReduction.rules
+        for s in database.substances { texts += s.riskReduction ?? [] }
+        for text in texts {
+            let range = NSRange(text.startIndex..., in: text)
+            XCTAssertNil(dosePattern.firstMatch(in: text, range: range), "Dose i risikoreduksjonstekst: \(text)")
+        }
+    }
 }

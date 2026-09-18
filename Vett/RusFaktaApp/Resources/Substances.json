@@ -31,6 +31,21 @@
     "afterCare": "Fortell ambulansepersonell hva som er inntatt, hvis du vet det. Helsepersonell har lovpålagt taushetsplikt. Det er svært sjelden noen blir straffeforfulgt for å ringe etter hjelp ved overdose – tvert imot er det både viktig og riktig å gjøre.",
     "mixingPrinciple": "De fleste dødelige overdoser skjer ved bruk av flere stoffer samtidig. Spesielt farlig: å kombinere flere dempende stoffer (alkohol, benzodiazepiner, opioider, GHB), eller å kombinere flere sentralstimulerende/serotonerge stoffer (MDMA, kokain, amfetamin, enkelte antidepressiva)."
   },
+  "generalRiskReduction": {
+    "title": "Hvis noen likevel skal bruke",
+    "intro": "Rusinnsikt oppfordrer ikke til bruk. Men de fleste overdoser skjer på måter som kan forebygges, og norske helsemyndigheter gir derfor råd også til dem som likevel bruker. Dette er de viktigste – de gjelder uansett stoff.",
+    "rules": [
+      "Ikke bruk alene. Ha alltid noen edru til stede som kan ringe 113. De fleste som dør av overdose, dør uten at noen er der til å hjelpe.",
+      "Ikke bland. Flere dempende stoffer sammen – alkohol, benzodiazepiner, opioider, GHB – er den vanligste årsaken til dødelige overdoser i Norge. Flere sentralstimulerende stoffer sammen legger belastningen på hjertet oppå hverandre.",
+      "Regn med at innholdet er ukjent. Styrken i illegale rusmidler varierer fra nesten ingenting til nesten rent, og tabletter og pulver kan inneholde noe helt annet enn det som er lovet – også svært sterke syntetiske opioider.",
+      "Toleransen forsvinner raskt. Etter en periode uten bruk – sykdom, behandling, soning, ferie – tåler kroppen langt mindre enn før. Mange overdoser skjer de første dagene etter et opphold.",
+      "Vent før du tar mer. Mange overdoser skjer fordi den første dosen «ikke virket» – og så virker begge samtidig. Dette gjelder særlig stoffer med sen virkning, som GHB og tabletter.",
+      "Ha oversikt. Når flere bruker sammen: la en edru person vite hvem som har tatt hva, og når – og skriv det gjerne ned. Det er akkurat den informasjonen ambulansen trenger.",
+      "Nalokson stopper opioidoverdoser. Nesesprayen fås reseptfritt på apotek og gratis gjennom det nasjonale nalokson-programmet i mange kommuner. Virkningen er kortvarig – ring 113 uansett.",
+      "Ring 113 – alltid, og tidlig. Helsepersonell har taushetsplikt, og det er svært sjelden noen får problemer for å ha bedt om hjelp. Det er alltid bedre å ringe én gang for mye enn én gang for lite."
+    ],
+    "sourceNote": "Basert på Helsedirektoratets nasjonale overdosestrategi, Giftinformasjonen (helsenorge.no) og faktaarkene fra KORUS, RUSinfo og Uteseksjonen i Oslo."
+  },
   "substances": [
     {
       "id": "alkohol",
@@ -45,8 +60,9 @@
       "overdoseSigns": ["Bevisstløs / vekkes ikke", "dårlig eller uregelmessig pust", "urinerer på seg", "kaster opp mens bevisstløs (kvelningsfare)", "mulig hodeskade etter fall"],
       "emergencyAction": "Ring 113 hvis personen er bevisstløs, ikke kan vekkes, puster dårlig, har urinert på seg, har tatt andre stoffer, eller har slått hodet. Ikke la personen være alene. Puster personen: legg i stabilt sideleie. Puster personen ikke: start HLR. Gi aldri en bevisstløs person noe å drikke.",
       "mixingRisks": "Svært farlig sammen med andre dempende stoffer (benzodiazepiner, opioider, GHB) – pusten kan stoppe helt. Farlig sammen med sentralstimulerende stoffer, som kan maskere rusfølelsen og føre til overdrikking, uttørking og hjertebelastning. Hjemmebrent kan inneholde metanol, som kan gi blindhet og hjerneskade.",
+      "riskReduction": ["Hvor fort du drikker, og hvor mye på kort tid, avgjør mer enn hva du drikker. Å spise før og underveis reduserer risikoen.", "Aldri sammen med sovemedisin, benzodiazepiner, opioider, GHB eller andre sløvende stoffer – kombinasjonen kan være særlig farlig.", "En svært beruset person skal ikke være alene: legg personen i sideleie, hold personen varm, og sjekk pusten jevnlig. Oppkast kan komme ned i luftveiene.", "Lar personen seg ikke vekke: ring 113. Trenger du råd: legevakt 116 117 eller Giftinformasjonen 22 59 13 00."],
       "legalStatus": "Lovlig for voksne (18 år for drikke opptil 22 %, 20 år for sterkere drikke). Ulovlig å selge/skjenke til mindreårige.",
-      "sourceNote": "Basert på rusinfo.no og rusopplysningen.no"
+      "sourceNote": "Basert på rusinfo.no og rusopplysningen.no Rådene om risikoreduksjon: Giftinformasjonen (helsenorge.no)."
     },
     {
       "id": "cannabis",
@@ -77,8 +93,9 @@
       "overdoseSigns": ["Kraftig uro", "feber", "rask pust", "kramper", "bevisstløshet", "fare for hjerneblødning eller hjerteinfarkt"],
       "emergencyAction": "Ring 113 umiddelbart ved sammenbrudd, hyperventilering eller kramper. Sjekk puls og pust – stabilt sideleie hvis personen puster, HLR hvis ikke. Avkjøl ved overoppheting. Gi aldri en bevisstløs person noe å drikke. Det finnes ingen motgift mot kokain. Bli hos personen.",
       "mixingRisks": "Med alkohol dannes stoffet kokaetylen i leveren – det er minst like aktivt som kokain, brytes langsommere ned og gir økt belastning på hjertet, samtidig som rusfølelsen maskeres og fører til overdrikking. Med andre sentralstimulerende stoffer eller enkelte antidepressiva (spesielt MAO-hemmere): fare for farlig overstimulering, overoppheting, kramper og hjertestans. Sammen med heroin, GHB eller andre dempende stoffer kan kokainets oppkvikkende effekt skjule hvor mye dempende du har tatt, slik at du overdoserer når kokainrusen avtar.",
+      "riskReduction": ["Kokain og alkohol sammen danner kokaetylen i kroppen, som belaster hjerte og lever mer enn kokain alene. Det er den vanligste kombinasjonen – og den farligste vanlige.", "Rusen går fort over, og mange tar nye doser tett etter hverandre. Hver dose belaster hjertet på nytt: risikoen for hjerterytmeforstyrrelser, kramper og akutte hjerteproblemer øker for hver gang.", "Renheten varierer mye, og pulver kan være blandet med andre stoffer.", "Ikke sammen med andre sentralstimulerende stoffer som amfetamin eller MDMA.", "Vær med folk du stoler på, et sted du føler deg trygg. Brystsmerter, uregelmessig puls eller kramper: ring 113 med en gang."],
       "legalStatus": "Ulovlig narkotisk stoff i Norge.",
-      "sourceNote": "Basert på rusinfo.no og rusopplysningen.no"
+      "sourceNote": "Basert på rusinfo.no og rusopplysningen.no Rådene om risikoreduksjon: faktaark fra KORUS, RUSinfo og Uteseksjonen i Oslo (med støtte fra Helsedirektoratet)."
     },
     {
       "id": "crack",
@@ -93,8 +110,9 @@
       "overdoseSigns": ["Kraftig uro og panikk", "brystsmerter", "pustevansker", "kramper", "uregelmessig hjerterytme", "bevisstløshet", "fare for hjerteinfarkt eller hjerneslag"],
       "emergencyAction": "Ring 113 umiddelbart ved brystsmerter, kramper, pustevansker eller bevisstløshet. Sjekk puls og pust – stabilt sideleie hvis personen puster, HLR hvis ikke. Det finnes ingen motgift mot kokain/crack. Bli hos personen.",
       "mixingRisks": "Samme farer som med kokainpulver: sammen med alkohol dannes kokaetylen, som gir økt og mer langvarig belastning på hjertet enn kokain alene. Sammen med andre sentralstimulerende stoffer eller MAO-hemmere er det fare for livstruende overstimulering, kramper og hjertestans. Sammen med heroin, GHB eller andre dempende stoffer kan crackens oppkvikkende effekt skjule hvor mye dempende du har tatt, med fare for overdose når rusen avtar.",
+      "riskReduction": ["Alt som gjelder kokain gjelder crack – men røyking gir raskere, kraftigere og kortere rus, og dermed enda tettere gjentatte doser og enda større belastning på hjertet.", "Aldri sammen med alkohol (kokaetylen) eller andre sentralstimulerende stoffer.", "Ikke bruk alene. Brystsmerter, kramper eller kraftig forvirring: ring 113 med en gang."],
       "legalStatus": "Regnes som samme narkotiske stoff som kokain i Norge (bare i en annen kjemisk form) og er ulovlig på samme måte – besittelse, bruk, salg og produksjon er straffbart.",
-      "sourceNote": "Basert på rusopplysningen.no, sundhed.dk og internasjonale kliniske kilder om crack-kokain"
+      "sourceNote": "Basert på rusopplysningen.no, sundhed.dk og internasjonale kliniske kilder om crack-kokain Rådene om risikoreduksjon: faktaark fra KORUS, RUSinfo og Uteseksjonen i Oslo (med støtte fra Helsedirektoratet)."
     },
     {
       "id": "amfetamin",
@@ -109,8 +127,9 @@
       "overdoseSigns": ["Mild: irritabilitet, uro, skjelvinger, hjertebank", "alvorlig: agitasjon, panikk, hallusinasjoner, psykose, kramper, svært høyt blodtrykk, uregelmessig hjerterytme, hjerteinfarkt, kraftig overoppheting, muskelnedbrytning, nyresvikt, hjerneblødning, bevisstløshet"],
       "emergencyAction": "Ring 113 hvis personen kollapser. Sjekk puls og pust – stabilt sideleie hvis pust, HLR hvis ikke. Gi aldri en bevisstløs person noe å drikke. Fortell hva som er inntatt. Bli hos personen.",
       "mixingRisks": "Med alkohol: hensynsløs/aggressiv oppførsel, maskert rus (overdrikking), hjerte-/leverbelastning. Med andre sentralstimulerende stoffer eller serotonerge legemidler: farlig overstimulering, kramper, hjertestans og hjerneslag – spesielt med MAO-hemmere. Med GHB, opioider eller andre dempende stoffer kan amfetaminet skjule hvor dempet/sløv du blir, slik at du tar mer enn kroppen tåler og overdoserer når den oppkvikkende effekten avtar.",
+      "riskReduction": ["Ikke sammen med andre sentralstimulerende stoffer som kokain eller MDMA – belastningen på hjertet legges oppå hverandre.", "Alkohol demper følelsen av rus, ikke belastningen: mange drikker langt mer enn de tåler uten å merke det.", "Gjentatte doser og flere døgn uten søvn øker risikoen for psykose, overoppheting og hjerteproblemer kraftig. Søvn, mat og drikke er ikke valgfritt.", "Renheten og styrken varierer mye.", "Vær sammen med noen som er edru. Brystsmerter, svært høy kroppstemperatur, kraftig forvirring eller kramper: ring 113."],
       "legalStatus": "Ulovlig narkotisk stoff til ikke-medisinsk bruk. Enkelte amfetaminpreparater (f.eks. Elvanse, Attentin) er reseptbelagte ADHD-legemidler i reseptgruppe A.",
-      "sourceNote": "Basert på rusinfo.no og rusopplysningen.no"
+      "sourceNote": "Basert på rusinfo.no og rusopplysningen.no Rådene om risikoreduksjon: faktaark fra KORUS, RUSinfo og Uteseksjonen i Oslo (med støtte fra Helsedirektoratet)."
     },
     {
       "id": "metamfetamin",
@@ -125,8 +144,9 @@
       "overdoseSigns": ["Agitasjon, panikk, hallusinasjoner, psykose", "kramper", "svært høyt blodtrykk, uregelmessig hjerterytme, hjerteinfarkt", "kraftig overoppheting og muskelnedbrytning", "nyresvikt, hjerneblødning, bevisstløshet"],
       "emergencyAction": "Ring 113 hvis personen kollapser, får kramper eller psykose. Sjekk puls og pust – stabilt sideleie hvis pust, HLR hvis ikke. Gi aldri en bevisstløs person noe å drikke. Fortell hva som er inntatt. Bli hos personen.",
       "mixingRisks": "Med alkohol: hensynsløs/aggressiv oppførsel, maskert rus, hjerte-/leverbelastning. Med andre sentralstimulerende stoffer eller serotonerge legemidler: farlig overstimulering, kramper, hjertestans og hjerneslag – spesielt med MAO-hemmere. Med GHB, opioider eller andre dempende stoffer kan metamfetaminet skjule hvor dempet/sløv du blir, slik at du tar mer enn kroppen tåler og overdoserer når den oppkvikkende effekten avtar.",
+      "riskReduction": ["Ikke sammen med andre sentralstimulerende stoffer som kokain eller MDMA – belastningen på hjertet legges oppå hverandre.", "Alkohol demper følelsen av rus, ikke belastningen: mange drikker langt mer enn de tåler uten å merke det.", "Gjentatte doser og flere døgn uten søvn øker risikoen for psykose, overoppheting og hjerteproblemer kraftig. Søvn, mat og drikke er ikke valgfritt.", "Renheten og styrken varierer mye.", "Vær sammen med noen som er edru. Brystsmerter, svært høy kroppstemperatur, kraftig forvirring eller kramper: ring 113."],
       "legalStatus": "Ulovlig narkotisk stoff i Norge. Har ingen godkjent medisinsk bruk her, i motsetning til amfetamin som finnes i enkelte reseptbelagte ADHD-legemidler.",
-      "sourceNote": "Basert på rusopplysningen.no, NHI.no og rusinfo.no"
+      "sourceNote": "Basert på rusopplysningen.no, NHI.no og rusinfo.no Rådene om risikoreduksjon: faktaark fra KORUS, RUSinfo og Uteseksjonen i Oslo (med støtte fra Helsedirektoratet)."
     },
     {
       "id": "mdma",
@@ -141,8 +161,9 @@
       "overdoseSigns": ["Alvorlig overoppheting", "farlig forhøyet puls/blodtrykk", "kramper", "bevisstløshet – forsterkes av uttørking og fysisk aktivitet som dansing", "forvirring, kvalme og hodepine kan også skyldes overdrevent vanninntak (vannforgiftning), ikke bare uttørking"],
       "emergencyAction": "Ring 113 ved sammenbrudd, kramper eller bevisstløshet. Sjekk puls og pust, stabilt sideleie ved pust. Avkjøl ved overoppheting. Bli hos personen, fortell hva som er inntatt.",
       "mixingRisks": "Med alkohol: økt fare for hodepine/kvalme, maskert rus, økt uttørkings-/overopphetingsrisiko. Drikk vann eller salte/sukrede drikker jevnlig ved svetting og dans, men unngå å drikke svært store mengder væske på kort tid – det kan gi livstruende vannforgiftning (hyponatremi). Med andre serotonerge/stimulerende stoffer og MAO-hemmere: farlig overstimulering, kramper, hjertestans.",
+      "riskReduction": ["Du kan aldri vite hvor mye virkestoff en tablett inneholder – styrken varierer enormt, og noen tabletter inneholder helt andre stoffer.", "Ikke ta mer selv om du ikke kjenner noe med en gang, og ikke ta en ny dose når den første «går ut» – det øker risikoen for bivirkninger og overoppheting.", "Overoppheting er den største faren: ta pauser fra dansingen, kjøl deg ned, og drikk jevnlig – men ikke overdrevent. Vann er ikke motgift mot MDMA, og for mye vann kan gi vannforgiftning. Drikke med elektrolytter (sportsdrikk) er bedre enn store mengder vann.", "Unngå alkohol – det øker både uttørking og overoppheting.", "Aldri sammen med antidepressiva (spesielt MAO-hemmere), andre sentralstimulerende stoffer eller dempende stoffer.", "Vær sammen med folk du stoler på, og sørg for at minst én person ikke har tatt noe."],
       "legalStatus": "Ulovlig narkotisk stoff i Norge.",
-      "sourceNote": "Basert på rusinfo.no og rusopplysningen.no"
+      "sourceNote": "Basert på rusinfo.no og rusopplysningen.no Rådene om risikoreduksjon: faktaark fra KORUS, RUSinfo og Uteseksjonen i Oslo (med støtte fra Helsedirektoratet)."
     },
     {
       "id": "ghb",
@@ -157,8 +178,9 @@
       "overdoseSigns": ["Bevisstløshet", "langsom puls og lavt blodtrykk", "urinerer på seg", "muskelrykninger/spasmer", "pustevansker som kan utvikle seg til pustestans"],
       "emergencyAction": "Ring 113 umiddelbart ved sammenbrudd – det finnes ingen motgift mot GHB og ingen dose er helt «trygg». Sjekk puls og pust, stabilt sideleie ved pust, HLR hvis ikke. Gi aldri en bevisstløs person noe å drikke. Bli hos personen.",
       "mixingRisks": "Ekstremt farlig sammen med alkohol eller andre dempende stoffer – effekten forsterkes og kan gi alvorlig pustestans, koma eller død selv ved små mengder GHB.",
+      "riskReduction": ["Forskjellen mellom en rusdose og en dose som gir bevisstløshet er svært liten, og umulig å bedømme på øyemål. Hjemmelaget GHB, GBL og 1,4-BD har i tillegg helt ulik styrke.", "Effekten kommer først etter 15–30 minutter. Mange overdoser skjer fordi noen tar mer før den første dosen har virket – da virker begge samtidig.", "Aldri sammen med alkohol eller andre dempende stoffer. Det er den kombinasjonen som oftest gir pustestans.", "Bruk aldri alene. Når flere bruker sammen: en edru person bør holde oversikt over hvem som har tatt hva og når – skriv det ned.", "Den som «sovner» på GHB kan være bevisstløs, ikke søvnig. Ikke la personen sove det av alene: stabilt sideleie, sjekk pusten jevnlig, og ring 113 hvis personen ikke lar seg vekke.", "Ikke drikk rett fra flasken – konsentrert GBL og GHB kan gi etseskader i munn og svelg."],
       "legalStatus": "GHB, GBL og 1,4-BD er ulovlige narkotiske stoffer i Norge.",
-      "sourceNote": "Basert på rusinfo.no og rusopplysningen.no"
+      "sourceNote": "Basert på rusinfo.no og rusopplysningen.no Rådene om risikoreduksjon: faktaark fra KORUS, RUSinfo og Uteseksjonen i Oslo (med støtte fra Helsedirektoratet)."
     },
     {
       "id": "benzodiazepiner",
@@ -173,8 +195,9 @@
       "overdoseSigns": ["Uregelmessig og redusert pust", "nedsatt bevissthet", "lavt blodtrykk", "langsom puls", "slapp muskeltonus", "lav kroppstemperatur"],
       "emergencyAction": "Er du i tvil om noen har tatt for mye, alene eller sammen med alkohol/andre stoffer: ring Giftinformasjonen 22 59 13 00 eller nødnummeret 113. Sjekk puls og pust, stabilt sideleie ved pust, HLR hvis ikke. Gi aldri en bevisstløs person noe å drikke. Bli hos personen.",
       "mixingRisks": "Svært farlig sammen med opioider eller GHB – begge er også pustedempende, og kombinasjonen (spesielt med opioider) er en av de vanligste årsakene til dødelige overdoser. Også svært farlig sammen med alkohol – begge brytes ned av leveren, noe som øker konsentrasjonen av begge stoffene og gir økt fare for forvirring, alvorlige pusteproblemer, koma og død. Kombinasjon med pregabalin eller gabapentin (gabapentinoider) er også farlig, fordi disse forsterker den pustedempende effekten ytterligere – risikoen er størst når benzodiazepiner, opioider og pregabalin/gabapentin brukes sammen, en kombinasjon legemiddelmyndigheter har advart mot etter flere dødsfall. Jevnlig kombinasjon over tid øker risiko for hukommelsestap og avhengighet.",
+      "riskReduction": ["Aldri sammen med alkohol, opioider eller GHB – dempende stoffer forsterker hverandre, og det er slik de fleste benzodiazepin-relaterte dødsfall skjer.", "Illegale «benzo»-tabletter inneholder ofte helt andre stoffer enn det som står på dem – ofte langt sterkere, noen ganger syntetiske opioider.", "Ikke bruk alene, og ikke la noen som har tatt benzodiazepiner sammen med alkohol «sove det av» uten tilsyn: stabilt sideleie, sjekk pusten.", "Ikke slutt brått etter lengre bruk – abstinens kan gi kramper. Snakk med lege om nedtrapping."],
       "legalStatus": "Reseptbelagte legemidler i Norge. Ulovlig å besitte/bruke uten resept; selges også illegalt.",
-      "sourceNote": "Basert på rusinfo.no og rusopplysningen.no"
+      "sourceNote": "Basert på rusinfo.no og rusopplysningen.no Rådene om risikoreduksjon: Helsedirektoratets nasjonale overdosestrategi."
     },
     {
       "id": "opioider",
@@ -189,8 +212,9 @@
       "overdoseSigns": ["Sammensnørte pupiller", "blåfarge på lepper og fingre (oksygenmangel)", "langsom eller stoppet pust", "bevisstløshet", "i alvorlige tilfeller pustestans og død"],
       "emergencyAction": "Ring 113 umiddelbart ved sammenbrudd. Gi nalokson hvis tilgjengelig (motgift mot opioider – gratis nesespray på blå resept, og også reseptfritt på apotek) – det virker bare en kort stund, så personen må overvåkes videre. Sjekk puls og pust, stabilt sideleie ved pust, start HLR hvis ikke (113 kan veilede deg på telefon). Bli hos personen – det er svært sjelden noen får problemer med politiet for å ringe etter hjelp, og helsepersonell har taushetsplikt.",
       "mixingRisks": "Svært farlig sammen med andre pustedempende stoffer som alkohol, benzodiazepiner, GHB eller pregabalin/gabapentin (gabapentinoider) – kan lett gi dødelig pustestans, og faren er ekstra stor når opioider kombineres med både benzodiazepiner og pregabalin/gabapentin samtidig. Tramadol skiller seg fra andre opioider ved at det også påvirker serotonin- og noradrenalinsystemet og senker krampeterskelen – sammen med alkohol øker dette risikoen for krampeanfall og serotonergt syndrom, i tillegg til den vanlige pustedempende effekten. I flere andre land blandes illegale opioider stadig oftere med dyrebedøvelsen xylazin (se egen oppføring), som ikke reverseres av nalokson – xylazin er foreløpig ikke påvist i norske beslag eller stoffprøver, men følges tett av norske helsemyndigheter.",
+      "riskReduction": ["Ikke bruk alene. De fleste som dør av opioidoverdose, dør uten at noen kan hjelpe.", "Toleransen faller raskt etter et opphold – behandling, soning, sykehus, avrusning. De første dagene etterpå er de farligste.", "Aldri sammen med alkohol, benzodiazepiner, GHB eller pregabalin/gabapentin. Kombinasjonen av dempende stoffer er den vanligste årsaken til dødelige overdoser i Norge.", "Regn med ukjent styrke: pulver og tabletter kan inneholde nitazener eller fentanyl, som er mange ganger sterkere enn heroin. Helsemyndighetene råder til stor forsiktighet med stoff du ikke kjenner.", "Røyking gir lavere overdoserisiko enn injisering, og rent brukerutstyr forebygger infeksjoner – kommunene deler ut sterilt utstyr gratis.", "Ha nalokson nesespray tilgjengelig, og la de rundt deg vite hvor den er. Nalokson virker kort – ring 113 uansett."],
       "legalStatus": "Ulovlige narkotiske stoffer til ikke-medisinsk bruk. Mange (morfin, oksykodon, metadon, buprenorfin, fentanyl, tramadol) er også reseptbelagte legemidler.",
-      "sourceNote": "Basert på rusinfo.no og rusopplysningen.no"
+      "sourceNote": "Basert på rusinfo.no og rusopplysningen.no Rådene om risikoreduksjon: Helsedirektoratets nasjonale overdosestrategi."
     },
     {
       "id": "nye-opioider",
@@ -205,8 +229,9 @@
       "overdoseSigns": ["Som andre opioid-overdoser: sammensnørte pupiller, blå lepper/fingre, kraftig nedsatt eller stoppet pust, bevisstløshet – kan komme svært raskt på grunn av høy styrke"],
       "emergencyAction": "Ring 113 umiddelbart. Gi nalokson hvis tilgjengelig – høyere eller gjentatte doser kan trengs. Fortsett å overvåke pust og bevissthet til hjelpen kommer.",
       "mixingRisks": "Samme farer som andre opioider – kombinasjon med alkohol, benzodiazepiner eller GHB øker kraftig faren for dødelig pustestans. Produkter solgt som andre stoffer (f.eks. falske oksykodon-tabletter) er funnet forurenset med nitazener, så brukeren vet ofte ikke at det er et syntetisk opioid.",
+      "riskReduction": ["Nitazener og fentanylanaloger er så sterke at en dose som ser «vanlig» ut kan være dødelig. Produkter solgt som heroin, oksykodon eller benzodiazepiner er funnet forurenset med dem – du vet ofte ikke at du tar et syntetisk opioid.", "Ikke bruk alene. Overdosen kommer raskt, og pustestans kan inntreffe i løpet av minutter.", "Aldri sammen med alkohol, benzodiazepiner eller GHB.", "Ha nalokson nesespray tilgjengelig. Ved nitazener kan det trengs flere doser – ring 113 med en gang, og fortsett å overvåke pusten.", "Følg med på Helsedirektoratets varsler om farlige stoffer i omløp (overdosefare.no)."],
       "legalStatus": "Ulovlige narkotiske stoffer i Norge.",
-      "sourceNote": "Basert på rusopplysningen.no og rusinfo.no"
+      "sourceNote": "Basert på rusopplysningen.no og rusinfo.no Rådene om risikoreduksjon: Helsedirektoratets nasjonale overdosestrategi."
     },
     {
       "id": "lsd",
@@ -253,8 +278,9 @@
       "overdoseSigns": ["Potensielt farlig kun ved svært høye doser", "kraftig forvirring", "delvis eller total bevisstløshet", "pusteproblemer kan forekomme, spesielt sammen med andre dempende stoffer"],
       "emergencyAction": "Ring 113 ved sammenbrudd eller bevisstløshet. Sjekk puls og pust, stabilt sideleie ved pust – ved dissosiasjon er det økt fare for oppkast og at man ikke merker det selv, så hold luftveiene fri. Dødelig overdose av ketamin alene er sjelden, men bli hos personen og søk hjelp.",
       "mixingRisks": "Sammen med alkohol, opioider, GHB eller benzodiazepiner øker faren betydelig for kraftig nedsatt pust (respirasjonsdepresjon), bevisstløshet og i verste fall dødsfall, siden disse stoffene forsterker hverandres dempende effekt på sentralnervesystemet. Kombinasjon med stoffer som svekker balanse og koordinasjon eller senker blodtrykket øker også faren for fall og skader. Man kan i tillegg kaste opp og sette i halsen mens man er koblet fra (dissosiert), særlig hvis man ligger på ryggen eller er bevisstløs.",
+      "riskReduction": ["Styrken varierer, og for stor dose kan gjøre deg ute av stand til å ta vare på deg selv («k-hole»).", "Ketamin gir dårlig balanse: unngå å stå eller gå når du er sterkt påvirket – fall og skader er vanlig.", "Aldri sammen med dempende stoffer som alkohol, GHB eller opioider – pust og bevissthet kan dempes kraftig, og oppkast i bevisstløs tilstand kan være dødelig.", "Bruk i trygge omgivelser og med folk du stoler på.", "Tisser du oftere enn vanlig, får blod i urinen eller smerter nederst i magen etter bruk: oppsøk lege."],
       "legalStatus": "Ketamin ble oppført på narkotikalisten i Norge fra 1. januar 2026, og regnes nå som et narkotisk stoff etter narkotikaforskriften. Det er fortsatt et reseptbelagt legemiddel (Ketalar) til godkjent medisinsk bruk, men ulovlig besittelse, salg og import kan nå straffes som narkotikaforbrytelse.",
-      "sourceNote": "Basert på rusinfo.no og rusopplysningen.no"
+      "sourceNote": "Basert på rusinfo.no og rusopplysningen.no Rådene om risikoreduksjon: faktaark fra KORUS, RUSinfo og Uteseksjonen i Oslo (med støtte fra Helsedirektoratet)."
     },
     {
       "id": "lystgass",

@@ -48,6 +48,16 @@ nonisolated struct GeneralEmergencyGuidance: Codable {
     let mixingPrinciple: String
 }
 
+/// Generelle råd for risikoreduksjon («Hvis noen likevel skal bruke»), vist i
+/// Nødhjelp-fanen. Innholdet er hentet fra norske helsemyndigheter og gir
+/// ingen doser eller mengder — bare hva som øker og reduserer risiko.
+nonisolated struct GeneralRiskReduction: Codable {
+    let title: String
+    let intro: String
+    let rules: [String]
+    let sourceNote: String
+}
+
 nonisolated struct Substance: Codable, Identifiable, Hashable {
     let id: String
     let name: String
@@ -63,6 +73,10 @@ nonisolated struct Substance: Codable, Identifiable, Hashable {
     let mixingRisks: String
     let legalStatus: String
     let sourceNote: String
+    /// Stoffspesifikke råd for risikoreduksjon. Valgfritt felt i JSON —
+    /// bare satt for stoffer der norske helsemyndigheter gir konkrete råd.
+    /// Aldri doser eller mengder (se CLAUDE.md / Apple-retningslinje 1.4.3).
+    let riskReduction: [String]?
 
     static func == (lhs: Substance, rhs: Substance) -> Bool { lhs.id == rhs.id }
     func hash(into hasher: inout Hasher) { hasher.combine(id) }
@@ -77,7 +91,8 @@ nonisolated struct Substance: Codable, Identifiable, Hashable {
         // (e.g. Kokain's own text never spells out "overdose"), which would
         // otherwise make a search like "overdose kokain" fail to find it.
         ([name, category, riskLevel, shortDescription, "overdose", "nødhjelp"] + aliases + effects
-            + shortTermRisks + longTermRisks + overdoseSigns + [emergencyAction, mixingRisks, legalStatus])
+            + shortTermRisks + longTermRisks + overdoseSigns + [emergencyAction, mixingRisks, legalStatus]
+            + (riskReduction ?? []))
             .joined(separator: " ")
             .lowercased()
     }
@@ -151,5 +166,6 @@ extension String {
 nonisolated struct SubstanceDatabase: Codable {
     let emergencyNumbers: EmergencyNumbers
     let generalEmergencyGuidance: GeneralEmergencyGuidance
+    let generalRiskReduction: GeneralRiskReduction
     let substances: [Substance]
 }

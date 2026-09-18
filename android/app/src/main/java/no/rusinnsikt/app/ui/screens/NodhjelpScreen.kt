@@ -20,6 +20,7 @@ import androidx.compose.material.icons.filled.GraphicEq
 import androidx.compose.material.icons.filled.HelpOutline
 import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material.icons.filled.PersonOff
+import androidx.compose.material.icons.filled.Shield
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -37,6 +38,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import no.rusinnsikt.app.data.EmergencyNumber
+import no.rusinnsikt.app.data.GeneralRiskReduction
 import no.rusinnsikt.app.data.SubstanceRepository
 import no.rusinnsikt.app.util.safeStartActivity
 
@@ -80,6 +82,8 @@ fun NodhjelpScreen() {
 
         InfoBlock("Etterpå", guidance.afterCare)
         InfoBlock("Om å blande stoffer", guidance.mixingPrinciple)
+
+        RiskReductionSection(database.generalRiskReduction)
 
         AllNumbersSection(numbers.all)
     }
@@ -174,6 +178,35 @@ private fun InfoBlock(title: String, text: String) {
     ) {
         Text(title, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
         Text(text, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+    }
+}
+
+/**
+ * «Hvis noen likevel skal bruke» — helsemyndighetenes generelle råd for
+ * risikoreduksjon. Punktliste, ikke nummerert: rådene er ikke en rekkefølge.
+ * Speiler riskReductionSection i EmergencyView.swift.
+ */
+@Composable
+private fun RiskReductionSection(rr: GeneralRiskReduction) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(MaterialTheme.colorScheme.surfaceVariant, RoundedCornerShape(14.dp))
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(10.dp)
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            Icon(Icons.Filled.Shield, contentDescription = null)
+            Text(rr.title, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+        }
+        Text(rr.intro, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        rr.rules.forEach { rule ->
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text("•")
+                Text(rule, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.weight(1f))
+            }
+        }
+        Text(rr.sourceNote, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
     }
 }
 

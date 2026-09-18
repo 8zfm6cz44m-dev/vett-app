@@ -9,7 +9,8 @@ final class SubstanceModelTests: XCTestCase {
         name: String = "Testkain",
         aliases: [String] = ["testis", "tk"],
         category: String = "Testkategori",
-        riskLevel: String = "Middels"
+        riskLevel: String = "Middels",
+        riskReduction: [String]? = nil
     ) -> Substance {
         Substance(
             id: id,
@@ -25,8 +26,14 @@ final class SubstanceModelTests: XCTestCase {
             emergencyAction: "Ring 113.",
             mixingRisks: "Farlig med alkohol.",
             legalStatus: "Ulovlig.",
-            sourceNote: "Kilde."
+            sourceNote: "Kilde.",
+            riskReduction: riskReduction
         )
+    }
+
+    func testRiskReductionIsSearchable() {
+        let substance = makeSubstance(riskReduction: ["Bruk aldri alene."])
+        XCTAssertTrue(substance.searchableText.contains("bruk aldri alene"))
     }
 
     func testSearchableText_includesNameAliasesAndInjectedKeywords() {

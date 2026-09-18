@@ -25,6 +25,14 @@ struct SubstanceDetailView: View {
                         .id(Self.overdoseAnchor)
 
                     card(title: "Fare ved blanding med andre stoffer", icon: "arrow.triangle.merge", text: substance.mixingRisks)
+
+                    // Stoffspesifikke råd fra helsemyndighetene om hva som
+                    // øker og reduserer risiko. Aldri doser. Vises bare for
+                    // stoffer som har slikt innhold i Substances.json.
+                    if let tips = substance.riskReduction, !tips.isEmpty {
+                        bulletCard(title: "Slik reduserer du risikoen", icon: "shield.lefthalf.filled", items: tips)
+                    }
+
                     card(title: "Juridisk status i Norge", icon: "scalemass", text: substance.legalStatus)
 
                     Text(substance.sourceNote)
@@ -157,6 +165,11 @@ struct SubstanceDetailView: View {
         lines.append("Fare ved blanding med andre stoffer:")
         lines.append(substance.mixingRisks)
         lines.append("")
+        if let tips = substance.riskReduction, !tips.isEmpty {
+            lines.append("Slik reduserer du risikoen:")
+            lines.append(contentsOf: tips.map { "• \($0)" })
+            lines.append("")
+        }
         lines.append("Juridisk status i Norge:")
         lines.append(substance.legalStatus)
         lines.append("")

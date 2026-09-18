@@ -26,6 +26,7 @@ import androidx.compose.material.icons.filled.MonitorHeart
 import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material.icons.filled.Sell
 import androidx.compose.material.icons.filled.Share
+import androidx.compose.material.icons.filled.Shield
 import androidx.compose.material.icons.filled.Speed
 import androidx.compose.material.icons.filled.AutoAwesome
 import androidx.compose.material.icons.filled.WarningAmber
@@ -100,6 +101,11 @@ fun SubstanceDetailScreen(substance: Substance, scrollToOverdose: Boolean, onNav
         )
 
         Card("Fare ved blanding med andre stoffer", Icons.Filled.CallMerge, substance.mixingRisks)
+        // Stoffspesifikke råd fra helsemyndighetene om hva som øker og
+        // reduserer risiko. Aldri doser. Speiler SubstanceDetailView.swift.
+        if (substance.riskReduction.isNotEmpty()) {
+            BulletCard("Slik reduserer du risikoen", Icons.Filled.Shield, substance.riskReduction)
+        }
         Card("Juridisk status i Norge", Icons.Filled.Balance, substance.legalStatus)
 
         Text(substance.sourceNote, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
@@ -302,6 +308,11 @@ private fun shareText(substance: Substance): String {
     lines.add("Fare ved blanding med andre stoffer:")
     lines.add(substance.mixingRisks)
     lines.add("")
+    if (substance.riskReduction.isNotEmpty()) {
+        lines.add("Slik reduserer du risikoen:")
+        lines.addAll(substance.riskReduction.map { "• $it" })
+        lines.add("")
+    }
     lines.add("Juridisk status i Norge:")
     lines.add(substance.legalStatus)
     lines.add("")

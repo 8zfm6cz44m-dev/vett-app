@@ -37,6 +37,8 @@ struct EmergencyView: View {
                 infoBlock(title: "Etterpå", text: guidance.afterCare)
                 infoBlock(title: "Om å blande stoffer", text: guidance.mixingPrinciple)
 
+                riskReductionSection
+
                 allNumbersSection
             }
             .padding()
@@ -116,6 +118,33 @@ struct EmergencyView: View {
         VStack(alignment: .leading, spacing: 6) {
             Text(title).font(.headline)
             Text(text).font(.subheadline).foregroundStyle(.secondary)
+        }
+        .padding()
+        .background(Color(.secondarySystemBackground))
+        .clipShape(RoundedRectangle(cornerRadius: 14))
+    }
+
+    /// «Hvis noen likevel skal bruke» — helsemyndighetenes generelle råd for
+    /// risikoreduksjon. Ikke en nummerert liste: rådene er ikke en rekkefølge.
+    private var riskReductionSection: some View {
+        let rr = store.database.generalRiskReduction
+        return VStack(alignment: .leading, spacing: 10) {
+            Label(rr.title, systemImage: "shield.lefthalf.filled")
+                .font(.headline)
+            Text(rr.intro)
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+            ForEach(Array(rr.rules.enumerated()), id: \.offset) { _, rule in
+                HStack(alignment: .top, spacing: 8) {
+                    Text("•")
+                    Text(rule).font(.subheadline)
+                    Spacer(minLength: 0)
+                }
+            }
+            Text(rr.sourceNote)
+                .font(.caption2)
+                .foregroundStyle(.secondary)
+                .padding(.top, 2)
         }
         .padding()
         .background(Color(.secondarySystemBackground))

@@ -56,11 +56,17 @@ data class Substance(
     val mixingRisks: String,
     val legalStatus: String,
     val sourceNote: String,
+    /**
+     * Stoffspesifikke råd for risikoreduksjon. Valgfritt i JSON — tom liste for
+     * stoffer uten slikt innhold. Aldri doser eller mengder (se CLAUDE.md).
+     */
+    val riskReduction: List<String> = emptyList(),
 ) {
     /** Full lowercased text used for local, on-device search matching only. */
     val searchableText: String by lazy {
         (listOf(name, category, riskLevel, shortDescription, "overdose", "nødhjelp") + aliases + effects +
-            shortTermRisks + longTermRisks + overdoseSigns + listOf(emergencyAction, mixingRisks, legalStatus))
+            shortTermRisks + longTermRisks + overdoseSigns + listOf(emergencyAction, mixingRisks, legalStatus) +
+            riskReduction)
             .joinToString(" ")
             .lowercase()
     }
@@ -75,9 +81,18 @@ data class Substance(
     }
 }
 
+/** Generelle råd for risikoreduksjon («Hvis noen likevel skal bruke»), vist i Nødhjelp. */
+data class GeneralRiskReduction(
+    val title: String,
+    val intro: String,
+    val rules: List<String>,
+    val sourceNote: String,
+)
+
 data class SubstanceDatabase(
     val emergencyNumbers: EmergencyNumbers,
     val generalEmergencyGuidance: GeneralEmergencyGuidance,
+    val generalRiskReduction: GeneralRiskReduction,
     val substances: List<Substance>,
 )
 
@@ -117,6 +132,14 @@ fun parseSubstanceDatabase(json: String): SubstanceDatabase {
         mixingPrinciple = guidanceJson.getString("mixingPrinciple"),
     )
 
+    val rrJson = root.getJSONObject("generalRiskReduction")
+    val riskReduction = GeneralRiskReduction(
+        title = rrJson.getString("title"),
+        intro = rrJson.getString("intro"),
+        rules = rrJson.getJSONArray("rules").toStringList(),
+        sourceNote = rrJson.getString("sourceNote"),
+    )
+
     val substancesJson = root.getJSONArray("substances")
     val substances = List(substancesJson.length()) { i ->
         val s = substancesJson.getJSONObject(i)
@@ -135,10 +158,11 @@ fun parseSubstanceDatabase(json: String): SubstanceDatabase {
             mixingRisks = s.getString("mixingRisks"),
             legalStatus = s.getString("legalStatus"),
             sourceNote = s.getString("sourceNote"),
+            riskReduction = s.optJSONArray("riskReduction")?.toStringList() ?: emptyList(),
         )
     }
 
-    return SubstanceDatabase(numbers, guidance, substances)
+    return SubstanceDatabase(numbers, guidance, riskReduction, substances)
 }
 
 object SubstanceRepository {

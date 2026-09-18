@@ -4,6 +4,7 @@ import no.rusinnsikt.app.logic.SubstanceGroup
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import java.io.File
@@ -107,5 +108,39 @@ class SubstancesJsonTest {
         assertEquals(SubstanceGroup.ANNET, SubstanceGroup.forSubstance(xylazin))
         val nps = substances.first { it.id == "nps" }
         assertEquals(SubstanceGroup.ANNET, SubstanceGroup.forSubstance(nps))
+    }
+
+    // --- Risikoreduksjon ---
+
+    @Test
+    fun generalRiskReductionIsPresent() {
+        val rr = loadDatabase().generalRiskReduction
+        assertTrue(rr.title.isNotEmpty())
+        assertTrue(rr.intro.isNotEmpty())
+        assertTrue(rr.rules.size >= 5)
+        assertTrue(rr.sourceNote.isNotEmpty())
+    }
+
+    @Test
+    fun highRiskSubstancesHaveRiskReduction() {
+        val db = loadDatabase()
+        for (id in listOf("ghb", "mdma", "opioider", "nye-opioider", "benzodiazepiner", "alkohol", "kokain", "ketamin")) {
+            val s = db.substances.first { it.id == id }
+            assertTrue("$id should have riskReduction", s.riskReduction.isNotEmpty())
+        }
+    }
+
+    /**
+     * Apple-retningslinje 1.4.2/1.4.3 og CLAUDE.md: rådene skal aldri inneholde
+     * doser eller mengder. Tall + masse-/volumenhet = dose = forbudt.
+     */
+    @Test
+    fun riskReductionNeverContainsDoses() {
+        val db = loadDatabase()
+        val dose = Regex("""\d+([.,]\d+)?\s?(mg|ml|g|gram|µg|mikrogram|milligram|milliliter|dl|cl)\b""", RegexOption.IGNORE_CASE)
+        val texts = db.generalRiskReduction.rules + db.substances.flatMap { it.riskReduction }
+        for (t in texts) {
+            assertNull("Dose i risikoreduksjonstekst: $t", dose.find(t))
+        }
     }
 }
