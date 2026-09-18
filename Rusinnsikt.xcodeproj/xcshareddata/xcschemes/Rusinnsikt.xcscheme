@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "000000000000000100000000"
-               BuildableName = "Vett.app"
-               BlueprintName = "Vett"
-               ReferencedContainer = "container:Vett.xcodeproj">
+               BuildableName = "Rusinnsikt.app"
+               BlueprintName = "Rusinnsikt"
+               ReferencedContainer = "container:Rusinnsikt.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -36,8 +36,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5B301C403038EF7D00902D38"
-               BuildableName = "VettTests.xctest"
-               ReferencedContainer = "container:Vett.xcodeproj">
+               BuildableName = "RusinnsiktTests.xctest"
+               ReferencedContainer = "container:Rusinnsikt.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -58,9 +58,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "000000000000000100000000"
-            BuildableName = "Vett.app"
-            BlueprintName = "Vett"
-            ReferencedContainer = "container:Vett.xcodeproj">
+            BuildableName = "Rusinnsikt.app"
+            BlueprintName = "Rusinnsikt"
+            ReferencedContainer = "container:Rusinnsikt.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "000000000000000100000000"
-            BuildableName = "Vett.app"
-            BlueprintName = "Vett"
-            ReferencedContainer = "container:Vett.xcodeproj">
+            BuildableName = "Rusinnsikt.app"
+            BlueprintName = "Rusinnsikt"
+            ReferencedContainer = "container:Rusinnsikt.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

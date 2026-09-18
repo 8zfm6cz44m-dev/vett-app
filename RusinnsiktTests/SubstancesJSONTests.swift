@@ -1,12 +1,12 @@
 import XCTest
-@testable import Vett
+@testable import Rusinnsikt
 
 /// Guards against a broken or malformed Substances.json ever reaching a
 /// build undetected. DataStore.swift calls fatalError() if this file fails
 /// to decode, which would crash the app at launch for every user — these
 /// tests catch that at build/test time instead.
 ///
-/// Requires this test target's "Host Application" to be set to Vett (the
+/// Requires this test target's "Host Application" to be set to Rusinnsikt (the
 /// default Xcode offers when creating a Unit Testing Bundle target), so
 /// that Bundle.main resolves to the app bundle containing Substances.json —
 /// exactly like DataStore.swift's own loading code.

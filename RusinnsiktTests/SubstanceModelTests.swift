@@ -1,5 +1,5 @@
 import XCTest
-@testable import Vett
+@testable import Rusinnsikt
 
 /// Tests for Substance's derived search text/word lists (Models.swift).
 final class SubstanceModelTests: XCTestCase {

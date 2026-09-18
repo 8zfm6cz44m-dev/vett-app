@@ -1,11 +1,11 @@
-# CLAUDE.md – Rusinnsikt (Vett)
+# CLAUDE.md – Rusinnsikt
 
 **Projekt:** Rusinnsikt — norsk faktaoppslagsverk om rusmidler och nödhjälp
 **Ägare:** Martin Elofsson / Devlyn IT Tjenester
 **Vad det ÄR:** Två helt fristående, helt offline native-appar med identiskt innehåll:
-- iOS: SwiftUI, `Vett/RusFaktaApp/`, projekt `Vett.xcodeproj`, bundle-id `no.rusinnsikt.app`
+- iOS: SwiftUI, `Rusinnsikt/RusFaktaApp/`, projekt `Rusinnsikt.xcodeproj`, bundle-id `no.rusinnsikt.app`
 - Android: Kotlin/Jetpack Compose, `android/`, applicationId `no.rusinnsikt.app`
-- Innehåll: `Vett/RusFaktaApp/Resources/Substances.json` och `android/app/src/main/assets/substances.json` — ska alltid vara byte-identiska.
+- Innehåll: `Rusinnsikt/RusFaktaApp/Resources/Substances.json` och `android/app/src/main/assets/substances.json` — ska alltid vara byte-identiska.
 
 **Vad det INTE är (en tidigare version av denna fil påstod fel):** Ingen webbapp, ingen backend, ingen server, ingen databas, ingen inloggning, inga betalningar, inga annonser, inga premium-nivåer, inget API. Allt sådant strider mot appens grundlöfte och får inte byggas in.
 

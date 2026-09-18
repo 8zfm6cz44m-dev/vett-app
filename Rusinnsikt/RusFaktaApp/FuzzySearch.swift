@@ -6,7 +6,7 @@ import Foundation
 /// logic, which is exactly what broke last time — see SubstanceListView.swift).
 ///
 /// Pulled out into its own file, independent of any SwiftUI view, so it can
-/// be unit tested directly — see VettTests/FuzzySearchTests.swift.
+/// be unit tested directly — see RusinnsiktTests/FuzzySearchTests.swift.
 enum FuzzySearch {
     /// True if `query` appears anywhere in `fullText` as an exact substring
     /// (fast path, handles most searches), or — for queries of 3+ characters

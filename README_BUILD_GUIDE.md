@@ -4,8 +4,8 @@ Kort guide för det som inte är helt självförklarande när du bygger och slä
 
 ## Bygga och köra lokalt
 
-1. Öppna `Vett.xcodeproj` i Xcode.
-2. Välj schemat **Vett** (target: Vett, host app för testerna: VettTests).
+1. Öppna `Rusinnsikt.xcodeproj` i Xcode.
+2. Välj schemat **Rusinnsikt** (target: Rusinnsikt, testmål: RusinnsiktTests).
 3. Under **Signing & Capabilities**, se till att "Automatically manage signing" är ikryssat och att ditt Apple Developer-team är valt.
 4. Cmd+R för att bygga och köra i Simulator eller på enhet.
 
@@ -13,7 +13,7 @@ Bundle ID: `no.rusinnsikt.app`. Visningsnamn: Rusinnsikt.
 
 ## Köra testerna
 
-Cmd+U kör hela **VettTests**-målet (FuzzySearch, modell-decoding, JSON-validering, tel:-URL:er).
+Cmd+U kör hela **RusinnsiktTests**-målet (FuzzySearch, modell-decoding, JSON-validering, tel:-URL:er).
 
 ## Offline-först
 

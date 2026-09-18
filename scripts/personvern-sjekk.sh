@@ -4,7 +4,7 @@
 # Avslutar med felkod om något av de absoluta kraven i CLAUDE.md bryts.
 set -u
 cd "$(dirname "$0")/.."
-IOS="Vett/RusFaktaApp"; AND="android/app/src/main"; PBX="Vett.xcodeproj/project.pbxproj"
+IOS="Rusinnsikt/RusFaktaApp"; AND="android/app/src/main"; PBX="Rusinnsikt.xcodeproj/project.pbxproj"
 fail=0
 ok(){ printf '  PASS  %s\n' "$1"; }
 bad(){ printf '  FAIL  %s\n' "$1"; fail=1; }

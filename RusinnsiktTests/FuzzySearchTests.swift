@@ -1,5 +1,5 @@
 import XCTest
-@testable import Vett
+@testable import Rusinnsikt
 
 /// Tests for the typo-tolerant search matching used by SubstanceListView
 /// (via FuzzySearch.swift) — this is the most complex, easiest-to-quietly-
