@@ -130,7 +130,7 @@ struct AboutView: View {
             }
 
             Section {
-                Text("Rusinnsikt er et uavhengig informasjonsprosjekt og er ikke offisielt tilknyttet rusinfo.no, rusopplysningen.no, Oslo kommune eller Helsedirektoratet.")
+                Text("Rusinnsikt er utviklet av Devlyn IT. Appen er et uavhengig informasjonsprosjekt og er ikke offisielt tilknyttet rusinfo.no, rusopplysningen.no, Oslo kommune eller Helsedirektoratet.")
                     .font(.caption2)
                     .foregroundStyle(.secondary)
             }

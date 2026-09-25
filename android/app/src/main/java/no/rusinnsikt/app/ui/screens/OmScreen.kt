@@ -196,7 +196,7 @@ fun OmScreen(onPrivacyPolicy: () -> Unit, onSupport: () -> Unit, onOnboardingRes
         }
 
         Text(
-            "Rusinnsikt er et uavhengig informasjonsprosjekt og er ikke offisielt tilknyttet rusinfo.no, rusopplysningen.no, Oslo kommune eller Helsedirektoratet.",
+            "Rusinnsikt er utviklet av Devlyn IT. Appen er et uavhengig informasjonsprosjekt og er ikke offisielt tilknyttet rusinfo.no, rusopplysningen.no, Oslo kommune eller Helsedirektoratet.",
             style = MaterialTheme.typography.labelSmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )

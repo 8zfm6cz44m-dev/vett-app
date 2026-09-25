@@ -108,7 +108,7 @@ og annonsering. Ingen egen landingsside er nødvendig for lansering.
 
 **Copyright-feltet i App Store Connect (under App Information):**
 
-`2026 Devlyn`
+`2026 Devlyn IT`
 
 (Formatet Apple forventer er år + rettighetshaver, uten "©" — Apple legger
 selv til symbolet i visningen.)
@@ -119,7 +119,7 @@ selv til symbolet i visningen.)
 
 Gjennomgått og bekreftet/rettet før innsending:
 
-- **Personvern/support-side**: `https://sites.google.com/view/rusinnsikt-personvern/` er **live og publisert**. Domenet rusinnsikt.no er nå kjøpt (Loopia), men siden ligger fortsatt på Google Sites — det er fortsatt greit som Privacy Policy URL/Support URL i App Store Connect. NB: siden viser fortsatt elofsson.martin@gmail.com som kontakt-e-post — oppdater den manuelt til info@rusinnsikt.no når e-postvidaresendingen er satt opp (se punkt 9).
+- **Personvern/support-side**: `https://sites.google.com/view/rusinnsikt-personvern/` er **live og publisert**. Domenet rusinnsikt.no er nå kjøpt (Loopia), men siden ligger fortsatt på Google Sites — det er fortsatt greit som Privacy Policy URL/Support URL i App Store Connect. NB: siden viser fortsatt Martins private e-post og navn — oppdater den manuelt til info@rusinnsikt.no og «Utgiver: Devlyn IT» (se punkt 9–10).
 - **Skjermdumper**: 6 stk, 1284×2778 px (iPhone 6.5"-klassen) i `App Store Screenshots/`. Bekreftet gyldig og tilstrekkelig format mot Apples offisielle screenshot-spesifikasjon (developer.apple.com) — ingen flere størrelser er påkrevd for innsending.
 - **App-ikon**: 1024×1024, RGB uten alpha-kanal — korrekt for App Store-markedsføringsikonet.
 - **Eksportoverholdelse**: `ITSAppUsesNonExemptEncryption = NO` er satt i prosjektet — matcher "ingen ikke-unntatt kryptering"-svaret i App Store Connect.
@@ -153,7 +153,7 @@ faktisk skal virke:
 1. Logg inn i Loopia-kundesonen → **"Opprett en e-postadresse"** →
    **"Lage en e-postadresse som sender videre til f.eks. Gmail eller Hotmail"**.
 2. Velg domenet **rusinnsikt.no**, skriv `info` som ønsket adresse, og sett
-   videresending til `elofsson.martin@gmail.com`.
+   videresending til Martins private e-post.
 3. Dette er **gratis** siden domenet allerede bruker LoopiaDNS (bekreftet i
    skjermbildet — "Still inn navneserver" var allerede haket av). En egen
    betalt e-postboks er IKKE nødvendig, bare videresendingen.
@@ -169,8 +169,8 @@ en egen, separat prosess (nytt Team ID, D-U-N-S-nummer, Apple-verifisering
 
 ## 10. Utvikler-/utgivernavn — 2026-09-17
 
-Martins beslutning: der appens utvikler eller utgiver nevnes, skal det stå **Devlyn** og ingenting annet. Gjennomført i appens support-/personverntekster (`docs/`) og i Copyright-feltet (punkt 6: `2026 Devlyn`). Selve appen nevner ingen utvikler ved navn (kun «appens utvikler» i ansvarsfraskrivelsen).
+Martins beslutning: der appens utvikler eller utgiver nevnes, skal det stå **Devlyn IT** og ingenting annet (presisert 2026-09-25; tidligere «Devlyn»). Gjennomført i appens support-/personverntekster (`docs/`) og i Copyright-feltet (punkt 6: `2026 Devlyn IT`). Selve appen nevner ingen utvikler ved navn (kun «appens utvikler» i ansvarsfraskrivelsen).
 
 **Én ting som ikke kan endres fra koden:** App Store viser alltid navnet på Apple Developer-kontoen som «Selger»/utvikler under appen. Med dagens Individual-konto (Team ID UZ46LP2XU5) blir det **Martin Elofsson**, og det kan ikke overstyres. Skal det stå Devlyn i App Store, må kontoen være en Organization-konto. **Rettelse 2026-09-17 (tidligere notat var feil):** man trenger IKKE ny konto eller ny årsavgift — Apple konverterer en eksisterende Individual-konto til Organization på forespørsel via Apple Developer Support (developer.apple.com/support/account/), samme 99 USD/år fortsetter. Men Apples vilkår krever «a legal entity that can enter into contracts with Apple. We do not accept DBAs, fictitious business names, trade names», og Apple sier uttrykkelig at «individual or sole proprietor/single person business» skal være Individual. Et norsk ENK er et enkeltpersonforetak = Martin personlig med org.nr, ikke en egen juridisk person — så org.nr-et alene gir ikke Organization-status. Den sikre veien er et AS (f.eks. Devlyn AS) + D-U-N-S-nummer, og da vises det registrerte firmanavnet som selger. Naturlig tidspunkt: når ENK-et uansett gjøres om til AS. Utbetaling for betalte apper/IAP fungerer fint på Individual-kontoen (Paid Apps Agreement + bankkonto), og inntekten er ENK-inntekt uansett. Google Play lar derimot utviklernavnet settes fritt i Play Console («Devlyn») når Android-versjonen publiseres.
 
-Kontakt-e-post i appen og dokumentene er nå **info@rusinnsikt.no** (opprettet i Loopia 2026-09-17). Google Sites-siden må fortsatt oppdateres manuelt til samme adresse og til «Utgiver: Devlyn».
+Kontakt-e-post i appen og dokumentene er nå **info@rusinnsikt.no** (opprettet i Loopia 2026-09-17). Google Sites-siden må fortsatt oppdateres manuelt til samme adresse og til «Utgiver: Devlyn IT».
