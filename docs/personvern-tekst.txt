@@ -1,39 +1,8 @@
-Rusinnsikt — Support og personvern
+Personvernerklæring — Rusinnsikt
 
 Sist oppdatert: 25. september 2026
 Utgiver: Devlyn IT
 Kontakt: info@rusinnsikt.no
-
-
-
-SUPPORT
-
-Har du spørsmål, tilbakemelding eller problemer med Rusinnsikt? Send e-post til info@rusinnsikt.no, så svarer vi så raskt vi kan. Vi trenger ingen opplysninger om deg for å hjelpe – men si gjerne hvilken telefonmodell og systemversjon du bruker hvis noe ikke virker.
-
-Ved mistanke om overdose: ring 113. Giftinformasjonen: 22 59 13 00 (døgnåpent).
-
-Vanlige spørsmål:
-
-Appen krasjer eller fungerer ikke som den skal
-Prøv først å laste ned appen på nytt fra app-butikken. Fungerer det fortsatt ikke, send oss en e-post med hvilken telefonmodell og systemversjon (iOS eller Android) du bruker, og hva som skjedde.
-
-Jeg finner ikke informasjon om et bestemt stoff
-Bruk søkefunksjonen (Søk-fanen) i appen – den finner også kallenavn og slangord. Mangler stoffet fortsatt, send oss gjerne et forslag på e-post.
-
-Jeg har funnet en faktafeil
-Innholdet er forkortet fra offentlige kilder (RUSinfo / Oslo kommune, Helsedirektoratet, Folkehelseinstituttet, Direktoratet for medisinske produkter, Giftinformasjonen m.fl.) og kontrolleres jevnlig mot kildene. Send oss en e-post med hva som er feil, gjerne med kilde, så retter vi det.
-
-Jeg vil fjerne lokal data fra appen
-Gå til Om → Nullstill velkomstskjerm i appen. Det er den eneste innstillingen appen lagrer. Du kan også slette appen for å fjerne all lokal data.
-
-Kan noen se at jeg har appen?
-Appen sender ingenting noe sted, har ingen konto og lagrer ikke hva du har lest eller søkt på. Innholdet skjules i app-veksleren. Det appen ikke kan påvirke, er telefonen selv: en fullt administrert jobbtelefon (MDM) kan vise arbeidsgiveren hvilke apper som er installert, og foreldrekontroll kan vise appbruk. Det gjelder alle apper, ikke bare Rusinnsikt.
-
-Gir appen råd om hvordan man bruker rusmidler?
-Nei. Appen oppfordrer ikke til bruk og inneholder ingen doser eller bruksanvisninger. Den gjengir norske helsemyndigheters råd om hva som øker og reduserer risiko, og hva man gjør ved mistanke om overdose.
-
-
-PERSONVERNERKLÆRING
 
 Rusinnsikt er et nøytralt, faktabasert oppslagsverk om rusmidler og risiko. Appen er laget for å virke uten internett. All faktainformasjon, nødhjelp og søk ligger i appen. Vi samler ikke inn personopplysninger, har ingen konto og bruker ingen analyse- eller reklameverktøy.
 
@@ -55,6 +24,6 @@ Innholdet er forkortet fra offentlige kilder, blant annet RUSinfo (Oslo kommune)
 Øvrig
 Vi selger ikke personopplysninger. Ingen sporing, ingen tredjepartsannonser.
 
-Rusinnsikt er utviklet av Devlyn IT og er et uavhengig prosjekt som ikke er offisielt tilknyttet rusinfo.no, rusopplysningen.no, Oslo kommune eller Helsedirektoratet. Innholdet erstatter ikke profesjonell medisinsk vurdering, akutthjelp eller rådgivning.
+Rusinnsikt er utviklet av Devlyn IT og er et uavhengig prosjekt som ikke er offisielt tilknyttet rusinfo.no, rusopplysningen.no, Oslo kommune eller Helsedirektoratet.
 
 Spørsmål om personvern: info@rusinnsikt.no
