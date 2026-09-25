@@ -1,0 +1,91 @@
+/* Rusinnsikt – support og personvern på devlyn.no. Følger devlyn.no sitt fargesystem. */
+:root {
+  --primary: #6b3fa0;
+  --primary-light: #8b5fbf;
+  --primary-dark: #4a2670;
+  --accent: #ff6b9d;
+  --accent-light: #ffa3c7;
+  --text-primary: #f5f5f7;
+  --text-secondary: #c7c7cc;
+  --bg-primary: #1a1425;
+  --bg-secondary: #2a1f40;
+  --bg-tertiary: #3d2f5c;
+  --line: #3d2f5c;
+  --ok: #7ed6a5;
+  --font: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+html { color-scheme: dark; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent-light); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--accent); }
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+/* Header */
+.top {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  max-width: 44rem; margin: 0 auto; padding: 1.1rem 1rem;
+}
+.brand { font-weight: 700; font-size: 1.35rem; letter-spacing: -0.01em; color: var(--text-primary); text-decoration: none; }
+.brand span { background: linear-gradient(90deg, var(--primary-light), var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.top nav { display: flex; gap: 0.25rem 1rem; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+.top nav a { color: var(--text-secondary); text-decoration: none; font-size: 0.95rem; }
+.top nav a[aria-current="page"] { color: var(--text-primary); border-bottom: 2px solid var(--accent); padding-bottom: 2px; }
+.top nav a.cta { background: var(--primary); color: #fff; padding: 0.45rem 0.9rem; border-radius: 999px; font-weight: 600; }
+.top nav a.cta:hover { background: var(--primary-light); }
+
+/* Layout */
+main { max-width: 44rem; margin: 0 auto; padding: 1rem 1rem 3rem; }
+section + section { margin-top: 3rem; padding-top: 2.25rem; border-top: 1px solid var(--line); }
+h1 { font-size: clamp(2rem, 6vw, 2.75rem); line-height: 1.1; letter-spacing: -0.02em; margin: 0.2rem 0 0.75rem; text-wrap: balance; }
+h2 { font-size: 1.45rem; letter-spacing: -0.01em; margin: 0 0 0.75rem; text-wrap: balance; }
+h3 { font-size: 1.05rem; margin: 1.75rem 0 0.5rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+p { margin: 0 0 1rem; }
+.eyebrow { font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-light); margin: 0.5rem 0 0; }
+.lead { font-size: 1.2rem; color: var(--text-secondary); max-width: 38rem; }
+.muted { color: var(--text-secondary); font-size: 0.9rem; }
+
+/* Hero facts */
+.facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin: 1.5rem 0; padding: 0; }
+@media (max-width: 480px) { .facts { grid-template-columns: 1fr; } }
+.facts div { background: var(--bg-secondary); border: 1px solid var(--line); border-radius: 12px; padding: 0.9rem 1rem; }
+.facts dt { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.25rem; }
+.facts dd { margin: 0; font-weight: 500; }
+.emergency { background: var(--bg-tertiary); border-left: 4px solid var(--accent); border-radius: 8px; padding: 0.8rem 1rem; font-size: 1rem; }
+.emergency strong { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* FAQ */
+details { border: 1px solid var(--line); border-radius: 10px; background: var(--bg-secondary); margin: 0 0 0.6rem; }
+summary { cursor: pointer; padding: 0.85rem 1rem; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; font-family: var(--mono); color: var(--accent-light); flex: none; }
+details[open] summary::after { content: "–"; }
+details p { padding: 0 1rem 0.9rem; margin: 0; color: var(--text-secondary); }
+
+/* Checklist */
+.checks { list-style: none; padding: 0; margin: 0 0 1.25rem; display: grid; gap: 0.5rem; }
+.checks li { padding-left: 1.75rem; position: relative; }
+.checks li::before { content: "✓"; position: absolute; left: 0; color: var(--ok); font-weight: 700; }
+.button { display: inline-block; background: var(--primary); color: #fff; text-decoration: none; padding: 0.65rem 1.1rem; border-radius: 999px; font-weight: 600; }
+.button:hover { background: var(--primary-light); color: #fff; }
+
+/* Document pages */
+.doc .meta { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem; }
+.doc h2 { margin-top: 2rem; font-size: 1.25rem; }
+
+/* Footer */
+footer { max-width: 44rem; margin: 0 auto; padding: 1.5rem 1rem 2.5rem; border-top: 1px solid var(--line); color: var(--text-secondary); font-size: 0.95rem; }
+footer p { margin: 0 0 0.35rem; }
+
+@media (prefers-reduced-motion: no-preference) { details { transition: background 0.15s; } }
+@media (max-width: 480px) { .top { flex-direction: column; align-items: flex-start; } .top nav { justify-content: flex-start; } }

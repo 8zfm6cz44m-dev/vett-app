@@ -13,7 +13,7 @@ Policy URL og Support URL. HTML-kilden ligger i `docs/privacy.html` (samme
 innhold som `PrivacyPolicyView`). Publiser den på en side du eier **før**
 innsending, f.eks. Google Sites:
 
-`https://sites.google.com/view/rusinnsikt-personvern/`
+`https://devlyn.no/rusinnsikt/personvern/` (Privacy Policy URL) og `https://devlyn.no/rusinnsikt/` (Support URL) — kildefiler i `docs/devlyn-site/rusinnsikt/`, publiseres i devlyn.no-repoet. Google Sites-siden var midlertidig
 
 Ikke bruk Claude-artefakter — de kan være private eller forsvinne.
 
@@ -96,7 +96,7 @@ lime inn i Google Sites eller tilsvarende). Publiser den, og bruk samme
 URL i både Support URL- og Privacy Policy URL-feltet i App Store Connect,
 f.eks.:
 
-`https://sites.google.com/view/rusinnsikt-personvern/`
+`https://devlyn.no/rusinnsikt/personvern/` (Privacy Policy URL) og `https://devlyn.no/rusinnsikt/` (Support URL) — kildefiler i `docs/devlyn-site/rusinnsikt/`, publiseres i devlyn.no-repoet. Google Sites-siden var midlertidig
 
 Ikke bruk Claude-artefakter — de kan være private eller forsvinne.
 
@@ -119,7 +119,7 @@ selv til symbolet i visningen.)
 
 Gjennomgått og bekreftet/rettet før innsending:
 
-- **Personvern/support-side**: `https://sites.google.com/view/rusinnsikt-personvern/` er **live og publisert**. Domenet rusinnsikt.no er nå kjøpt (Loopia), men siden ligger fortsatt på Google Sites — det er fortsatt greit som Privacy Policy URL/Support URL i App Store Connect. NB: siden viser fortsatt Martins private e-post og navn — oppdater den manuelt til info@rusinnsikt.no og «Utgiver: Devlyn IT» (se punkt 9–10).
+- **Personvern/support-side**: `https://devlyn.no/rusinnsikt/personvern/` (Privacy Policy URL) og `https://devlyn.no/rusinnsikt/` (Support URL) — kildefiler i `docs/devlyn-site/rusinnsikt/`, publiseres i devlyn.no-repoet. Google Sites-siden var midlertidig er **live og publisert**. Domenet rusinnsikt.no er nå kjøpt (Loopia), men siden ligger fortsatt på Google Sites — det er fortsatt greit som Privacy Policy URL/Support URL i App Store Connect. NB: siden viser fortsatt Martins private e-post og navn — oppdater den manuelt til info@rusinnsikt.no og «Utgiver: Devlyn IT» (se punkt 9–10).
 - **Skjermdumper**: 6 stk, 1284×2778 px (iPhone 6.5"-klassen) i `App Store Screenshots/`. Bekreftet gyldig og tilstrekkelig format mot Apples offisielle screenshot-spesifikasjon (developer.apple.com) — ingen flere størrelser er påkrevd for innsending.
 - **App-ikon**: 1024×1024, RGB uten alpha-kanal — korrekt for App Store-markedsføringsikonet.
 - **Eksportoverholdelse**: `ITSAppUsesNonExemptEncryption = NO` er satt i prosjektet — matcher "ingen ikke-unntatt kryptering"-svaret i App Store Connect.
@@ -136,7 +136,7 @@ Gjennomgått og bekreftet/rettet før innsending:
 2. Last opp den nye arkiverte builden til App Store Connect (Distribute App → App Store Connect).
 3. I App Store Connect, opprett versjon **1.0** for appen (hvis den ikke allerede finnes) og velg **build 2** når den har blitt behandlet ferdig (tar vanligvis 10–30 min).
 4. Lim inn tekstene fra punkt 4 (Undertittel, Nøkkelord, Promotional Text, Description) og punkt 6 (Copyright).
-5. Fyll inn **Privacy Policy URL** og **Support URL** = `https://sites.google.com/view/rusinnsikt-personvern/` (punkt 1/5).
+5. Fyll inn **Privacy Policy URL** og **Support URL** = `https://devlyn.no/rusinnsikt/personvern/` (Privacy Policy URL) og `https://devlyn.no/rusinnsikt/` (Support URL) — kildefiler i `docs/devlyn-site/rusinnsikt/`, publiseres i devlyn.no-repoet. Google Sites-siden var midlertidig (punkt 1/5).
 6. **App Privacy (personvern-"næringsetikett")**: Siden appen ikke samler inn noen data, svar **"Data Not Collected"** på hele spørreskjemaet.
 7. **Age Rating**: svar ærlig på spørsmålet om referanser til narkotikabruk — forvent 17+ (punkt 3).
 8. Lim inn App Review-notatet fra punkt 2 under App Review Information → Notes, og fyll i din e-post/telefon som kontakt der.
