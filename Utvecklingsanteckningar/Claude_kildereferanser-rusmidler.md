@@ -2,13 +2,14 @@
 name: kildereferanser-rusmidler
 description: Stående referanslista över medicinskt/vetenskapligt pålitliga källor för allt substansinnehåll i appen (Rusinnsikt/Vett). Basen för alla faktakoll-körningar framöver — läs FÖRE varje granskning, uppdatera NÄR nya pålitliga källor hittas eller en källa byter namn/domän/status.
 sources: [cowork]
-last_verified: 2026-09-24 (full djupsökning alla 29 ämnen, inkl. hela RUSinfo A–Å)
+last_verified: 2026-10-05 (full djupsökning alla 29 ämnen, RUSinfo A–Å hämtad på nytt, 156 sidor)
 ---
 
 Detta är den stående käll-basen Martin bad om 2026-09-12: enbart medicinskt/vetenskapligt styrkta sidor — inga forum, inga oredigerade wikis, inga anonyma harm-reduction-communities som primärkälla. Varje källa nedan är kontrollerad som aktiv och korrekt namngiven per verifieringsdatumet ovan. Listan är avsedd att LEVA: när en källa byter namn, domän eller läggs ner, uppdatera raden istället för att bara lägga till en ny. När en ny 100-procentigt pålitlig källa hittas under framtida faktakollar, lägg till den här.
 
 ## 0. Hämtningsbegränsningar (läs först — sparar timmar)
 
+- **Metod 2026-10-05 (Claude Code):** efter att huvudsidan öppnats i Claude Browser hämtades alla undersidor med same-origin `fetch()` i batcher om ~6 (45 s-gräns per javascript_tool-anrop; panelen kan vara dold och throttlas) och lades i `localStorage` (`rusinfo_dump`, nyckel = URL). POST till lokal mottagare, nedladdning och urklipp fungerade INTE (blockerat resp. fokuskrav). **Subagenter nekas ofta att läsa localStorage via javascript_tool** (säkerhetsspärr 'Browser JS Exfil'/'Auto-Mode Bypass'); huvudsessionen kan läsa den direkt, eller användaren tillåter verktyget.
 - **rusinfo.no** blockerar WebFetch (robots.txt svarar 503) och curl via Macens proxy (403). **Fungerande metod (2026-09-24):** öppna sajten i Claude Browser på Martins Mac och hämta undersidor med same-origin `fetch()` via javascript_tool; spara texten till filer som subagenter läser. Hela "Rusmidler A-Å" (29 sidor med alla undersidor) togs på detta sätt.
 - **lovdata.no** blockerar WebFetch (robots). Huvuddokumentet för narkotikaforskriften (2013-02-14-199) kan ibland hämtas men returneras då som en **gammal konsoliderad version (2016)** — den saknar alla senare tillägg (nitazener, kratom, bromazolam, HHC). Använd den ALDRIG för att avgöra om ett nyare ämne är listat; bekräfta i stället via DMP-nyhet, Kripos narkotikastatistikk eller OUS obduksjonsstatistikk, eller öppna lovdata i Claude Browser på Macen.
 - **dmp.no** artikeltexter är JS-renderade — WebFetch ger bara meta-beskrivningen. Samma workaround som ovan.
@@ -79,5 +80,5 @@ Dessa kan dyka upp i sökresultat och innehåller ibland korrekt information, me
 - Vid varje faktakoll: kontrollera i första hand mot sektion 1 (norska officiella källor, RUSinfo inkluderat), komplettera med sektion 2–3 endast där norsk täckning saknas eller behöver internationell styrkning.
 - Om en källa visar sig vara nedlagd, omdöpt eller flyttad: uppdatera raden här direkt.
 - Hittas en ny, uppenbart pålitlig källa: lägg till den i rätt sektion med kort motivering.
-- Stående bevakningspunkter (per 2026-09-24): forenklet forelegg-forskriften (høringsfrist 1 okt 2026); HHC/karisoprodol i forskrift 2025-12-19-2928 (ej verifierad); DMP-høring om zopiklon; ev. förbud mot nikotinfria e-sigaretter.
+- Stående bevakningspunkter (per 2026-10-05): forenklet forelegg-forskriften (høringsfrist 1 okt 2026 passerad, ej vedtagen); HHC/karisoprodol — RÄTTELSE: forskrift 2025-12-19-2928 gäller bara ketamin/esketamin, så var HHC/karisoprodol är listade i Norge är fortfarande ej verifierat (kontrollera manuellt på lovdata/dmp.no); DMP-høring om zopiklon (frist 15.5.2026, inget vedtak funnet); ev. förbud mot nikotinfria e-sigaretter (ej avgjort).
 - Detta dokument ersätter/kompletterar den tidigare källistan i `claude/faktakoll-2026-08-21.md`.

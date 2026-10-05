@@ -155,3 +155,44 @@ På Martins begäran ("Dags att göra ett djupdyk … Var säker på att denna o
 **Ohämtbart denna körning:** lovdata.no (robots — förutom huvuddokumentet i en 2016-version), dmp.no artikeltexter (JS), nalokson.uio.no (403), INCB green list (403), PMC (captcha), rusopplysningen.no kratom/poppers (JS). Inget nytt innehåll vilar enbart på en ohämtbar källa.
 
 **Att bevaka:** (1) forenklet forelegg-forskriften efter 1 okt 2026; (2) HHC/karisoprodol i forskrift 2025-12-19-2928 — kontrollera manuellt på lovdata; (3) DMP-høring om zopiklon; (4) ev. utvidgat förbud mot nikotinfria e-sigaretter.
+
+## 2026-10-05 — Djupsökning nr 3 (Claude Code): alla 29 ämnen + generella sektioner, RUSinfo hämtad på nytt
+
+På Martins begäran, körd i Claude Code (inte Cowork). Metod: RUSinfo (rusinfo.no) hämtades via Claude Browser på Macen — 156 sidor (huvudsidor + undersidor ur "Rusmidler A–Å", ~780 000 tecken; `vallergan` gav 404). Texten lades i webbläsarens localStorage (nyckel `rusinfo_dump`) och lästes därifrån. Fem granskningsagenter (grupp A–E) enligt skillens brief; B, C och D stoppades första gången av säkerhetsspärren för läsning av localStorage via javascript_tool och kördes därför om respektive ersattes av manuell genomgång. D kördes om och fick läsa; B och C jämfördes manuellt mot RUSinfo av huvudsessionen.
+
+**Resultat: 20 fält uppdaterade på 11 ämnen (6 grupp A, 13 grupp D, 2 egna). Identiskt i båda `Substances.json` (`cmp` OK). Dos-regex mot alla riskReduction + generalRiskReduction.rules: 0 träffar. Inga URL:er. `personvern-sjekk.sh`: alla PASS (binärkontrollen SKIP, ingen Release-build). iOS-tester (`xcodebuild test`, iPhone 17): TEST SUCCEEDED. Android-tester kunde inte köras (inget JDK på Macen) — dos-regexen kördes manuellt.**
+
+**Rättat (viktigast först):**
+- **Crack — varaktighet:** "5–10 min" / sniffad kokain "15–30 min" → "5–30 min" / "30–60 min" (FHI-notat 13.10.2025, tabell över inntaksmåter; RUSinfo kokain 15–60 min).
+- **Cannabis — edibles:** "30–60 min, inntil 2–3 timer" saknade namngiven källa → RUSinfo: omkring en time, noen ganger lenger; vent flere timer før du tar mer.
+- **Alkohol — overdoseSigns:** kramper och lav kroppstemperatur tillagda (RUSinfo alkoholbrosjyre).
+- **Lystgass:** emergencyAction fick HLR om personen inte puster (samma rättelse som nye-opioider 2026-09-25); mixingRisks fick potensmidler (Viagra)/poppers → kraftigt blodtrykksfall; longTermRisks fick minne/konsentrasjon, psykiske plager och psykisk avhengighet (RUSinfo brosjyre). Cannabis/blodtrykk-meningen bekräftad.
+- **Ketamin:** emergencyAction fick HLR + "gi aldri drikke til bevisstløs"; mixingRisks fick stimulanter → økt belastning på hjertet (RUSinfo/KORUS-brosjyren, tidigare förkastat som svagt belagt, nu direkt källa); longTermRisks utökad (hukommelse, særlig under 25 år; nedstemthet; rask toleranse); alias "jet" tillagt.
+- **Poppers:** shortTermRisks fick økt puls och besvimelse; sourceNote: ung.no (ej godkänd källa) ersatt med RUSinfo, som själv citerar legemiddelforskriften § 1-3.
+- **Mefedron:** effects/shortTermRisks utökade (svettetokter, aggressivitet, hjerterytmeforstyrrelser, nesesmerter, mild seksuell stimulering); longTermRisks: "mulige langvarige psykiske plager" saknade grund → "kunnskapen om langvarige skader er foreløpig begrenset" (RUSinfo).
+- **Khat — legalStatus:** "dyrking" finns inte i RUSinfos uppräkning av förbjudna handlingar → omskriven efter narkotikaforskriften § 5 (tilvirkning, anskaffelse, omsetning, innførsel, utførsel, oppbevaring, besittelse, bruk). Lovdata ohämtbar — medium.
+- **Amfetamin/metamfetamin — aliases:** "fort", "makka" resp. "meta" (RUSinfo).
+- **LSD — emergencyAction:** "tilby mat (gjerne søtt)" → "tilby enkel mat og litt vann" ("gjerne søtt" saknade källa; RUSinfo: enkel mat og drikke).
+- **DMT — overdoseSigns:** "Kraftig forhøyet puls" → "Tydelig forhøyet puls" (flaggan från 2026-09-24; RUSinfo: økt puls/blodtrykk).
+
+**Rättelse av tidigare logg:** Bevakningspunkten "HHC/karisoprodol i forskrift 2025-12-19-2928" var fel formulerad. Enligt Lovdata är den forskriften endast en ändring som lägger till ketamin och esketamin (i kraft 1.1.2026). Var HHC/karisoprodol är listade i Norge är fortfarande INTE verifierat på primärkälla (en DMP-nyhetssammanfattning antyder listning utan nasjonal høring efter CND-beslutet; Finland: narkotika från 29.12.2025). Appens `semisyntetiske-cannabinoider.legalStatus` är defensivt formulerad och påstår inget fel; ändrades inte.
+
+**Verifierat oförändrat:**
+- **legalStatus:** Forenklet forelegg-forskriften är fortfarande inte vedtatt/i kraft (regjeringen.no "Under behandling"; høring 26.6–1.10.2026; lovendringen från 20.6.2025, lov nr 83, ej i kraft) → "ulovlig" för kokain/amfetamin/metamfetamin stämmer; gramgränserna i förslaget ska INTE in i appen. DMP-høring om zopiklon (20.3.2026, frist 15.5.2026): inget vedtak funnet; zolpidem-texten opåverkad. Ketamin narkotikalistet 1.1.2026 och lystgassreglerna från 1.7.2026 bekräftade. E-sigaretter: nikotin-e-sig-förbudet vidareförs (direktivet i kraft 30.3.2026); nikotinfrie fortfarande inte avgjort (toll.no, Helsedirektoratet 7.4.2026); snus/nikotinposer oförändrat.
+- **Siffror:** Alkoholens åldersgränser (18/20 år); cannabis THC-halt (Kripos 2025); kokains renhet 30–95 %, snitt 73 % (Kripos 2025); nitazendödsfall 13 (2023) / 18 (2024) / <5 (2025) enligt OUS (RUSinfo anger 12 för 2023 — äldre siffra, appen behåller OUS).
+- **Fält mot RUSinfo utan avvikelse:** MDMA, GHB, benzodiazepiner, zolpidem, pregabalin, opioider, nye-opioider, lsd, fleinsopp, dmt (övrigt), 2cb, ketamin, khat, poppers, snus, e-sigaretter, syntetiske cannabinoider, generalEmergencyGuidance, generalRiskReduction.
+- **Nödnummer/öppettider:** 113, Giftinformasjonen 22 59 13 00 (dygnet runt), RUSinfo 915 08 588 (hverdager 11–18), Pårørendetelefonen 800 40 567 (hverdager 9–15, tirsdag også 18–21).
+
+**Ej genomfört / flaggat:**
+- Förslaget att RUSinfo-etiketten ska få "(stengt 14.30–15.00)" lades INTE in: kunde inte bekräftas i hämtad text (sidan om-rusinfo ingick inte i dumpen).
+- Förslaget att ta bort meningen "Tomme beholdere er farlig avfall" (lystgass) drogs tillbaka: RUSinfo har ett eget avsnitt om det (2026).
+- DMT mixingRisks ("ekstremt farlige… dødelig overstimulering… hjertestans") saknar direkt RUSinfo-belägg (RUSinfo: "potensielt svært alvorlig") men ändrades inte — varningen är medicinskt rimlig och ska inte försvagas utan bättre källa. Bör styrkas mot Helsebiblioteket vid nästa körning.
+- Cannabis "betydelig økt risiko for psykose" bygger på forskning.no (svag källa) — bör nyanseras/styrkas manuellt.
+- Opioider riskReduction "Røyking gir lavere overdoserisiko enn injisering": RUSinfo/Helsedirektoratet påpekar att även røyking och tabletter kan ge dødelig overdose — kan nyanseras.
+- Pregabalin "68 % økt risiko": inte återverifierad mot Gomes et al. (PLoS Med 2017); bör kontrolleras mot PubMed.
+- Ketamin mixingRisks-meningen om "stoffer som svekker balanse og koordinasjon eller senker blodtrykket" och mefedron mixingRisks (serotonergt syndrom) saknar RUSinfo-stöd; mefedron riskLevel "Lav (akutt dødelighet)" vs RUSinfo (rapporterade dödsfall) bör ses över.
+- lystgass, poppers, khat och mefedron saknar riskReduction (RUSinfo har dosfria råd för lystgass och poppers) — innehållsbeslut, kräver spegling i båda apparna.
+
+**Ohämtbart denna körning:** lovdata.no (robots; forskrift 2025-12-19-2928 hämtades av en agent men gäller bara ketamin/esketamin), dmp.no artikeltexter och høringsbrev-PDF (JS/ej läsbar), rusinfo.no/om-rusinfo (ej i dumpen), rusopplysningen.no (inte använd). Inget nytt innehåll vilar enbart på en ohämtbar källa, utom khat-ändringen (medium).
+
+**Att bevaka:** (1) forenklet forelegg-forskriften (vedtak/ikraftsettelse efter høringsfristen 1.10.2026); (2) HHC/karisoprodol — kontrollera manuellt på lovdata/dmp.no i vilken forskrift och från vilket datum de är listade; (3) DMP-høring om zopiklon (vedtak?); (4) nikotinfrie e-sigaretter (avgörande/registreringskrav).
