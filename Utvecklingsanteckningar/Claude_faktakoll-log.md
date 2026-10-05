@@ -196,3 +196,20 @@ På Martins begäran, körd i Claude Code (inte Cowork). Metod: RUSinfo (rusinfo
 **Ohämtbart denna körning:** lovdata.no (robots; forskrift 2025-12-19-2928 hämtades av en agent men gäller bara ketamin/esketamin), dmp.no artikeltexter och høringsbrev-PDF (JS/ej läsbar), rusinfo.no/om-rusinfo (ej i dumpen), rusopplysningen.no (inte använd). Inget nytt innehåll vilar enbart på en ohämtbar källa, utom khat-ändringen (medium).
 
 **Att bevaka:** (1) forenklet forelegg-forskriften (vedtak/ikraftsettelse efter høringsfristen 1.10.2026); (2) HHC/karisoprodol — kontrollera manuellt på lovdata/dmp.no i vilken forskrift och från vilket datum de är listade; (3) DMP-høring om zopiklon (vedtak?); (4) nikotinfrie e-sigaretter (avgörande/registreringskrav).
+
+## 2026-10-05 (tillägg) — Primärkälla: Lovdatas öppna API, narkotikaforskriften verifierad
+
+Lovdata blockerar vanlig hämtning (robots.txt `Disallow: /` för alla utom namngivna sökmotorer; samma på api.lovdata.no), men Stiftelsen Lovdata publicerar **gällande lover och sentrale forskrifter samt Norsk Lovtidend avd. I som öppna data under NLOD 2.0** (bekräftat via data.norge.no) via `https://api.lovdata.no` (Swagger: `/swagger/index.html`, grupp "Public data"). Ingen nyckel/konto. Flöde: `GET /v1/publicData/list` → `GET /v1/publicData/get/<filnamn>`. Filer 2026-10-03: `gjeldende-sentrale-forskrifter.tar.bz2` (21,3 MB), `gjeldende-lover.tar.bz2` (5,8 MB), `lovtidend-avd1-2026.tar.bz2` (1,5 MB), `lovtidend-avd1-2001-2025.tar.bz2` (69,3 MB). Kontakt: utvikling@lovdata.no. Nedladdade (med Martins ok) och lästes: gjeldende-sentrale-forskrifter + lovtidend-avd1-2026; forskriften `sf/sf-20130214-0199.xml` = narkotikaforskriften, senast ändrad genom FOR-2026-08-26-1682 (i kraft 2026-09-01). Tabellformat i texten: Stoffnavn | Internasjonal regulering | Forbudt etter § 5 | CAS (CAS-numret står EFTER raden).
+
+**Verifierat mot narkotikalisten (gällande 2026-10-03):**
+- **HHC är uttryckligen listad** (P II, forbudt etter § 5). Delta-8-THC, Δ10-THC, Δ6a(7)/Δ7/Δ9(11)-THC, Δ8- och Δ9-THC-O-acetat och dronabinol (Δ9-THC, P II) är också namngivna. THCP och HHC-P är INTE namngivna.
+- **Karisoprodol är listad** (P IV) — nämns inte i appen.
+- **Zopiklon och eszopiklon lades till i narkotikalisten med verkan från 1 juni 2026** (FOR-2026-05-15-892, "på bakgrunn av nasjonal høring"; samma forskrift lade till kemiska namn för ketamin/esketamin). **DMP-høringen om zopiklon är därmed avgjord.** Zolpidem: P IV, förbjudet enligt § 5-tabellen. Appen nämner inte zopiklon/Imovane; ingen ändring gjord.
+- Kratom (Mitragyna speciosa, forbudt § 5), Catha edulis/khat (forbudt § 5), Psilocybe (inkl. sporer, dyrkad/tørket sopp), bromazolam (P IV, forbudt § 5), tramadol, GHB, 2C-B, mefedron, MDMA, nitazener (omfattande generisk gruppe), esketamin/ketamin: listade. **Pregabalin och xylazin är INTE listade; lystgass är inte listad** — alla stämmer med appen.
+- FOR-2026-08-26-1682 (1.9.2026) lade till MDMB-FUBINACA (P II) och internationell reglering för N-pyrrolidino isotonitazen/N-desetyletonitazen — ingen app-påverkan.
+
+**Rättat i appen:** `semisyntetiske-cannabinoider.legalStatus` hävdade att Δ8-THC "ikke alltid [er] navngitt" — fel (Δ8-THC är namngivet). Texten nämner nu att HHC uttryckligen står på narkotikalisten (§ 5), räknar upp namngivna isomerer (Δ9, Δ8, Δ10, THC-O-acetat), behåller CND-datumen (mars 2025 / 6 dec 2025) och säger att THCP/HHC-P inte är namngivna men omfattas enligt FHI:s bedömning. Båda `Substances.json` identiska, dos-regex 0, inga URL:er, personvern-sjekk alla PASS.
+
+**Rättelse av tidigare bevakningspunkter:** (2) "HHC/karisoprodol — kontrollera manuellt på lovdata" är nu verifierad (listade) — datumet för när HHC/karisoprodol fördes upp är fortfarande ej fastställt (kräver `lovtidend-avd1-2001-2025.tar.bz2`, 69 MB, ej nedladdad). (3) zopiklon: listad 1.6.2026. Kvar att bevaka: forenklet forelegg, nikotinfrie e-sigaretter.
+
+**Metodnotis:** Framtida juridikkontroller ska gå via Lovdata-API:t (öppna data) i stället för lovdata.no. Datasetet uppdateras dagligen; `lovtidend-avd1-2026` visar de senaste ändringsforskriftene med ikraftträdandedatum.
