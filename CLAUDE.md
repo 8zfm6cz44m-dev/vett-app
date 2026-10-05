@@ -40,3 +40,14 @@ Varje ändring i endera appen ska speglas i den andra. Varje release ska föreg�
 - Commit-fotnot enligt sessionens instruktion (Co-Authored-By + Claude-Session).
 
 **Senast uppdaterad:** 2026-09-17
+
+## Källan till sanning för dokumentation (2026-10-05)
+
+Allt som rör faktakoll, källbas, App Store-guide och personvern-audit lever **i detta repo**, inte i Cowork-projektet "App - Vett":
+
+- `Utvecklingsanteckningar/Claude_faktakoll-log.md` – logg över alla faktakoll-körningar (lägg till en ny sektion per körning)
+- `Utvecklingsanteckningar/Claude_kildereferanser-rusmidler.md` – tillåtna/förbjudna källor, hämtningsbegränsningar (uppdatera `last_verified`)
+- `Utvecklingsanteckningar/Claude_app-store-connect-guide.md` – fältguide för App Store Connect
+- `PERSONVERN_AUDIT.md` – integritetsaudit och exakt löfte till användare
+
+Cowork-projektets `claude/*.md` är bara pekare hit och ska inte uppdateras. En Cowork-session som behöver innehållet läser filerna från Macen (ansluten mapp) eller från GitHub (`vett-app`, privat). Ingen manuell synk ska behövas.
