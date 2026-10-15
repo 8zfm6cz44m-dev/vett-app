@@ -35,11 +35,24 @@ Varje ändring i endera appen ska speglas i den andra. Varje release ska föreg�
 
 ## Arbetssätt
 - Svara Martin på svenska. Appens innehåll är på norsk bokmål.
-- Verifierade rättelser görs direkt och rapporteras efteråt.
-- Claude pushar inte till GitHub; Martin pushar själv från sin Mac.
+- Verifierade rättelser görs direkt och rapporteras efteråt (gäller interaktiva sessioner på Macen, där tester och kontrollskript kan köras).
 - Commit-fotnot enligt sessionens instruktion (Co-Authored-By + Claude-Session).
 
-**Senast uppdaterad:** 2026-09-17
+## Push-policy (beslutad 2026-10-15)
+
+- **Ingen Claude-session pushar till GitHub** – varken Claude Code på Macen, Cowork-sessioner eller det schemalagda veckojobbet. Martin pushar själv från sin Mac.
+- **Det schemalagda faktakoll-jobbet (Cowork, headless) är endast förslagsgivande:** det klonar `vett-app`, granskar och skriver förslag + loggpost i sin rapport, men committar och pushar inte. Förslagen läggs in av Martin eller en Claude Code-session på Macen, där `xcodebuild test` och `scripts/personvern-sjekk.sh` körs före commit.
+- Martin bör pusha sina lokala commits innan nästa jobbkörning, annars granskar jobbet gammalt innehåll på GitHub. Jobbet ska alltid ange vilken commit det granskat.
+- Jobbets prompt ändras bara av Martin eller en Cowork-session (`update_trigger`), inte från Claude Code.
+
+## Verifieringskrav för innehållsändringar (faktakoll)
+
+- En sakuppgift får ändras/föreslås som **verifierad** bara om (a) en primärkälla (Lovdata, norsk myndighet, RUSinfo/Helsedirektoratet, FHI, DMP) otvetydigt motsäger nuvarande text, eller (b) minst två oberoende källor ur kategori 1–3 i `Claude_kildereferanser-rusmidler.md` gör det. Annars: ingen ändring, bara en bevakningsnotis i loggen.
+- **Juridisk status** (narkotikalisten, forskrifter, ikraftträdande) verifieras mot **Lovdatas öppna API** (`https://api.lovdata.no`, `/v1/publicData/list` → `/v1/publicData/get/<fil>`, NLOD 2.0) – inte mot lovdata.no, som blockerar automatisk hämtning. Nedladdning av dataset kräver Martins ok med filnamn och storlek.
+- `legalStatus`, dödsfallssiffror och akut-/nödråd (`emergencyAction`, `overdoseSigns`, `generalEmergencyGuidance`, nödnummer) kräver alltid primärkälla och granskas av Martin innan de läggs in.
+- `riskReduction` får aldrig innehålla doser eller mängder. Endast rena sakfel ändras – aldrig ton, struktur eller kod.
+
+**Senast uppdaterad:** 2026-10-15
 
 ## Källan till sanning för dokumentation (2026-10-05)
 
